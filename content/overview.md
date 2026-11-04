@@ -1,10 +1,10 @@
 # Overview
 
-For the inclusion process on a one-dimensional torus, the current AI proof gives convergence of the full mass process to the Le Jan–Raimond sticky Brownian mass flow. The scaling is \(N/L_N\to\rho>0\) and \(Nd_N\to\Theta>0\), with time acceleration \(N^2/d_N\). The initial state has a fixed finite bound on the number of isolated stacks. See [Theorem 1](raw/#1-statement).
+In the thermodynamic limit, the inclusion process forms infinitely many condensates when the diffusivity decreases inversely with the particle number. For nearest-neighbour interactions, we show that their collective evolution, starting from finitely many condensates and after rescaling space and time, is described by a sticky Brownian mass flow.
 
 - [Digested](digested/): not yet written.
 - [Raw](raw/): the full AI-written proof.
 
 ## Contributors
 
-- Simon Gabriel (UC Berkeley)
+- [Simon Gabriel](https://gabriel-maths.github.io/) (UC Berkeley)
