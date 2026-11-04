@@ -31,7 +31,7 @@ B_k(z)=\sum_{1\le i<j\le n}
 \]
 Pairs at equal sites are excluded.
 
-For every deterministic initial state \(z\in\mathbb T_L^n\), and also for every initial distribution on that state space, equip the chain with its completed right-continuous natural filtration \((\mathcal F_t)_{t\ge0}\). For every deterministic real number \(\delta\ge0\) and every pair of bounded nonnegative stopping times \(\tau,\sigma\) satisfying
+**Proposition B.1 (conditional occupation estimate).** For every deterministic initial state \(z\in\mathbb T_L^n\), and also for every initial distribution on that state space, equip the chain with its completed right-continuous natural filtration \((\mathcal F_t)_{t\ge0}\). For every deterministic real number \(\delta\ge0\) and every pair of bounded nonnegative stopping times \(\tau,\sigma\) satisfying
 \[
 \tau\le\sigma\le\tau+\delta\quad\text{almost surely},
 \]
@@ -48,7 +48,7 @@ the following conditional inequality holds:
 
 The bound has exactly the displayed constants and is uniform over all the stated parameters, initial states or distributions, and stopping times. No equilibrium or separated-start assumption is imposed. No fixed pair of physical labels is assumed to have autonomous dynamics.
 
-Fix arbitrary parameters and stopping times from the statement. Use the notation \(L,n,q,d,k,\delta,G_n,R_n,I_n,B_k\) and \(\operatorname{dist}_L\). No limit or relationship between \(q\) and \(n\) will be used.
+*Proof.* Fix arbitrary parameters and stopping times from the statement. Use the notation \(L,n,q,d,k,\delta,G_n,R_n,I_n,B_k\) and \(\operatorname{dist}_L\). No limit or relationship between \(q\) and \(n\) will be used.
 
 ### B.1. The two-particle difference and the three-site case
 

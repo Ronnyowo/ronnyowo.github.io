@@ -41,6 +41,12 @@ No human or outside-family model audit is recorded.
 
 ## Editing
 
+The second editorial version adds an abstract and numbered statements for results already proved in the text.
+It adds explicit proof headings and removes the source-map link from the reading page.
+The complete main argument and all three appendices remain on that page.
+The final note in Appendix C now points to the verification of its hypotheses in Section 5.
+This is an editorial change, not a new mathematical audit or promotion.
+
 Edit the separate Markdown files in this directory.
 The build assembles content/raw.md from those parts.
 Keep content/digested.md empty until a digested account is written.

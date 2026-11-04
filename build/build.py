@@ -87,7 +87,13 @@ def write_page(output, title, source, active="", download=None, record=False, pr
     if download:
         actions = (f'<hr><p><a href="{link(download)}" download>Markdown</a> · '
                    '<a href="#" onclick="window.print(); return false">Print / save PDF</a></p>')
-    contents = '<details><summary>Contents</summary>' + toc + "</details>" if len(source) > 5000 and "<li>" in toc else ""
+    contents = '<details><summary>Contents</summary>' + toc + "</details>" if len(source) > 5000 and "<li>" in toc and output != "raw/index.html" else ""
+    if output == "raw/index.html":
+        body = re.sub(
+            r'(<p><strong>Theorem 1 \(full mass path convergence\)\.</strong>.*?)(?=<p>The limit)',
+            r'<div class="theorem thm thm-plain" id="theorem-1">\1</div>\n',
+            body, flags=re.S,
+        )
     page = (ROOT / "build/template.html").read_text()
     replacements = {
         "@@STYLESHEET@@": link("assets/style.css") + "?v=" + STYLE_VERSION,

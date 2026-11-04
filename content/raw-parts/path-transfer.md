@@ -2,7 +2,7 @@
 
 ### C.1. Statement and resolvent identity
 
-Let \((E,d)\) be a compact metric space. Let \((P_t)_{t\ge0}\) be a conservative, strongly continuous Feller semigroup on \(C(E)\). Assume that it has a continuous-path Markov realization with law \(Q_x\) for each \(x\in E\). For \(\lambda>0\) and \(g\in C(E)\), define
+**Theorem C.1 (path convergence from uniform resolvents).** Let \((E,d)\) be a compact metric space. Let \((P_t)_{t\ge0}\) be a conservative, strongly continuous Feller semigroup on \(C(E)\). Assume that it has a continuous-path Markov realization with law \(Q_x\) for each \(x\in E\). For \(\lambda>0\) and \(g\in C(E)\), define
 \[
 R_\lambda g=\int_0^\infty e^{-\lambda t}P_tg\,dt.
 \]
@@ -33,7 +33,7 @@ For every deterministic sequence \(z_N\in S_N\) such that \(\pi_N(z_N)\to x\in E
 \]
 with the Skorokhod \(J_1\) topology. The proof gives tightness at stopping times and unique identification of the path law. It does not assume that \(X_N\) is Markov with respect to its projected state. The resolvent assumption holds over all microscopic states. Uniform convergence of the semigroups in time is not an additional assumption.
 
-All resolvents use a positive discount. Put \(g_N=g\circ\pi_N\). Both semigroups are contractions, so their resolvents have norm at most \(1/\lambda\). Write
+*Proof.* All resolvents use a positive discount. Put \(g_N=g\circ\pi_N\). Both semigroups are contractions, so their resolvents have norm at most \(1/\lambda\). Write
 \[
 f_N=R_\lambda^N g_N,\qquad f=R_\lambda g.
 \]
@@ -136,4 +136,4 @@ It follows that, for every fixed \(s,u\ge0\) and \(g\in C(E)\),
 \]
 Use a countable uniformly dense subset of \(C(E)\) to identify the conditional transition probabilities. Compact metrizability makes \(C(E)\) separable, and uniform approximation extends equality of probability integrals to every function in \(C(E)\). Induction identifies every finite-dimensional distribution with that under \(Q_x\). Laws on continuous path space are determined by their finite-dimensional distributions at a countable dense set of times. Hence \(\operatorname{Law}(X)=Q_x\). Every subsequential limit has this law, so tightness gives convergence of the whole sequence in the stated topology.
 
-The argument is conditional on assumption 1. It does not prove that uniform resolvent assumption for the symmetric inclusion process.
+In the application to Theorem 1, Section 5.2 proves assumption 1 for the full mass process, and Section 5.4 verifies assumption 2.

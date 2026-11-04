@@ -51,9 +51,9 @@ Let \(R^0\) denote \(R\) on zero extensions of bounded functions on \(E_n\setmin
 \qquad(0\le d\le d_n).
 \]
 
-### A.2. Conclusions
+### A.2. Harmonic correction theorem
 
-There exist finite constants \(C_n\ge1\) and, for every real \(p\ge1\), \(C_{n,p}\ge1\). They depend only on the displayed indices. All six assertions below hold with these constants at the same time. The constants are uniform in lattice positions, separations, partitions, and label subsets. They are also uniform in \(f\) subject to its stated bound \(D\).
+**Theorem A.1 (harmonic corrections and trace estimates).** Under the definitions and hypotheses of Section A.1, there exist finite constants \(C_n\ge1\) and, for every real \(p\ge1\), \(C_{n,p}\ge1\). They depend only on the displayed indices. All six assertions below hold with these constants at the same time. The constants are uniform in lattice positions, separations, partitions, and label subsets. They are also uniform in \(f\) subject to its stated bound \(D\).
 
 1. **(A-H1)** Absorption is almost sure and \(\sup_{z\in E_n}\mathbb E_z\tau\le c_n\), \(\|U\|\le c_n\), \(\|P\|\le1\). The operator \(Q\) is a conservative jump generator of total rate at most \(2n\). Each nonzero off-diagonal \(Q\)-transition moves each label by at most two sites. Moreover,
    \[
@@ -135,7 +135,7 @@ There exist finite constants \(C_n\ge1\) and, for every real \(p\ge1\), \(C_{n,p
 
 ### A.3. Proof conventions
 
-Until the last section, \(n\ge2\). A constant denoted \(C_n\) can increase a finite number of times. Each increase depends only on \(n\). Likewise \(C_{n,p}\) depends only on \(n,p\). These conventions produce simultaneous constants by taking the maximum of the finitely many constants required below. All chains below have bounded total rates for fixed \(n,d\). Construct them with exponential clocks. These chains have no explosion. Compensate their jump counts to obtain the stopped Dynkin identities and square-martingale identities below. For each unbounded stopping time, the proof supplies integrability or a bounded approximation.
+*Proof of Theorem A.1.* Until the last section, \(n\ge2\). A constant denoted \(C_n\) can increase a finite number of times. Each increase depends only on \(n\). Likewise \(C_{n,p}\) depends only on \(n,p\). These conventions produce simultaneous constants by taking the maximum of the finitely many constants required below. All chains below have bounded total rates for fixed \(n,d\). Construct them with exponential clocks. These chains have no explosion. Compensate their jump counts to obtain the stopped Dynkin identities and square-martingale identities below. For each unbounded stopping time, the proof supplies integrability or a bounded approximation.
 
 ### A.4. Pure interaction and the leading trace
 

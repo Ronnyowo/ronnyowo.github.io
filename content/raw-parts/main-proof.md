@@ -1,11 +1,8 @@
-## Proof of Theorem 1
+### 1.1. Notation and proof structure
 
-
-The auxiliary estimates are stated and proved in Appendices A–C.
-Appendix A gives the harmonic corrections and trace estimates.
-Appendix B gives the occupation bound near a collision.
-Appendix C transfers uniform resolvent convergence to path convergence.
-All three appendices are included below.
+Sections 2–4 prove convergence of the auxiliary labelled processes and identify their limits.
+Section 5 proves Theorem 1 by factorial sampling and uniform resolvent convergence.
+Appendices A–C prove the harmonic correction estimates, the conditional occupation bound, and the path-transfer theorem used in the argument.
 Equation labels I–IV refer to Sections 2–5.
 
 For \(L\ge3\) and \(z\in\mathbb T_L^n\), set
@@ -39,7 +36,7 @@ Every labelled order \(n\) below is fixed but arbitrary; \(q\) is always \(N^2\)
 ## 2. Circle traces and tightness
 
 
-### 2.1. Objects and the precise conclusion
+### 2.1. Trace process and tightness
 
 Fix an integer \(n\ge2\). On \(\mathbb T_L^n\), use the labelled operators \(R_n,I_n\) of Appendix B. Let \(S\) be the tuples with no adjacent distinct occupied sites. For \(q>0\) and \(0<d\le d_n\), let \(Z\) have generator \(q(R_n+d^{-1}I_n)\). Write
 \[
@@ -47,12 +44,14 @@ c_n=\frac{n(n-1)}4,\qquad r=2nc_nd\le\frac14.
 \]
 All circle distances below are geodesic distances, and the product metric is the maximum of the coordinate distances. Absorption means first entrance into \(S\), including time zero. An excursion includes its returning jump.
 
-We prove uniform arbitrary-start absorption, vanishing lost time and deleted-excursion displacement, and agreement of the line and circle trace generators after multiplication by the actual acceleration. We then prove that, under
+**Proposition 2.1 (tightness).** Under
 \[
 q=N^2,\qquad \frac{N}{L_N}\longrightarrow\rho,
 \qquad L_Nd_N\longrightarrow\alpha\in(0,\infty),
 \]
-the laws of \(X_N(t)=Z_t/L_N\) are C-tight in \(D([0,T],\mathbb T^n)\), for every fixed \(T\), uniformly over initial states and initial distributions. This part concerns the auxiliary finite labelled system with this generator.
+the laws of \(X_N(t)=Z_t/L_N\) are C-tight in \(D([0,T],\mathbb T^n)\), for every fixed \(T\), uniformly over initial states and initial distributions.
+
+*Proof.* We first estimate absorption times, the time removed by the trace, and the displacement during each removed excursion. We then compare the line and circle trace generators at the accelerated time scale. The stopping-time estimates in Section 2.5 complete the proof.
 
 Constants denoted by \(C_n\) or \(C_{n,p}\) may change between occurrences. They are uniform in positions and initial laws. Constants in the tightness argument may also depend on the limiting parameters, the fixed chart margin, and the indicated displacement threshold.
 
@@ -286,6 +285,10 @@ For \(n=1\), \(S=\mathbb T_L\), the clock and excursion errors vanish, and the c
 
 ## 3. Collision terms and microscopic convergence
 
+**Proposition 3.1 (microscopic path convergence).** Fix \(n\ge1\). Let \(Z_N\) have generator \(N^2(R_n+d_N^{-1}I_n)\) on \(\mathbb T_{L_N}^n\). Under the parameter assumptions of Theorem 1, for every deterministic sequence \(z_N/L_N\to x\in\mathbb T^n\), the laws of \(Z_N/L_N\) started at \(z_N\) converge in \(D([0,\infty),\mathbb T^n)\) to the continuous \(n\)-point law with semigroup \(P_t^{(n)}\). The path topology is Skorokhod \(J_1\).
+
+*Proof.* Proposition 2.1 gives tightness. We identify the collision drift and covariance of each limit. Section 4 proves uniqueness for the resulting local martingale problem.
+
 ### 3.1. Positive layers in trace time
 
 Let \(\overline Y_N(u)=Y_u/L\) be the physical-time trace from Section 2. It may start from any distribution on the stable set. Write \(M_n=\binom n2\) and, for \(0<\varepsilon<1/4\), take \(k_N=\lfloor\varepsilon L\rfloor\); eventually \(1\le k_N<L/2\). Denote by \(B_{k_N}\) the positive-layer pair count in Appendix B. To estimate a trace started from a stable state, construct an untraced chain from that same state, with clock \(A\). The exact change of variables in retained time and \(0\le B_{k_N}\le M_n\) give
@@ -481,7 +484,7 @@ where \(P_x^{(n)}\) is the continuous target \(n\)-point path law. If convergenc
 ## 4. Identification of the continuum target
 
 
-### 4.1. Target, notation, and the precise local assertion
+### 4.1. Local martingale characterization
 
 Fix \(n\geq 1\), \(\alpha>0\), and \(\rho>0\). Write \(m=m_{\alpha,n}\), \(p(\pi)=p_\alpha(\pi)\), and \(\mathcal E=\mathcal E_n\) for the exact measure and closed form in the statement. For a circle configuration \(x\), write \(\pi(x)\) for its exact equality partition. For a block \(B\), put
 \[
@@ -496,7 +499,7 @@ r(A,C)=\frac{(|A|-1)!(|C|-1)!}{(|B|-1)!}.
 \]
 Directional derivatives at a collision are one-sided derivatives along the displayed vector. Let \(\mathcal H_n\) be the continuous real functions on \(\mathbb R^n\) that are linear on each chamber of the weak coordinate-order decomposition, as in Howitt–Warren's space \(L_n\). Constants may be added without changing any assertion.
 
-Choose a common-cut chart \(U=(\mathbb T\setminus\{q\})^n\), with lift \(z:U\longrightarrow I^n\), where \(I\) is an open interval of length one. Choose an open \(W\) with \(\overline W\subset U\), and let \(\tau\) be its first exit time. For the target started at any deterministic \(x\in W\), set \(Z_t=z(X_t)\) up to \(\tau\). Then the stopped coordinates are continuous local martingales and
+**Proposition 4.1 (characterization of the sticky motion).** Choose a common-cut chart \(U=(\mathbb T\setminus\{q\})^n\), with lift \(z:U\longrightarrow I^n\), where \(I\) is an open interval of length one. Choose an open \(W\) with \(\overline W\subset U\), and let \(\tau\) be its first exit time. For the target started at any deterministic \(x\in W\), set \(Z_t=z(X_t)\) up to \(\tau\). Then the stopped coordinates are continuous local martingales and
 \[
 \langle Z_i,Z_j\rangle_{t\wedge\tau}
 =2\rho^2\int_0^{t\wedge\tau}
@@ -519,6 +522,8 @@ r(A,B\setminus A)D_{v_{A,B\setminus A}}h(z).
 \tag{III.3}
 \]
 The inner sum is oriented: both \(A\) and \(B\setminus A\) occur. These local identities determine the continuous circle path law uniquely, including starts on arbitrary collision strata.
+
+*Proof.* We first identify the partition forms with the continuum construction. We then derive the local martingale identities and prove uniqueness.
 
 The target is indeed the Brownian specialization of Le Jan–Raimond's construction. Their parameter is \(\tau_0=1/(1+\alpha)\): the predictive probabilities in their Section 2 become \(\alpha/(\alpha+n)\) for a new block and \(|B|/(\alpha+n)\) for joining block \(B\). Starting from the unique partition of one label, these recurrences give precisely the displayed \(p_\alpha\) in the statement. Their equation (3.6), with one-point generator \(\rho^2\partial_{xx}\), gives precisely \(\mathcal E\). Their smooth form core agrees with the closure specified in the statement. Theorem 3.3 supplies compatible strong Feller semigroups. Compatibility with the one-point Brownian motion gives continuous coordinate paths, hence continuous joint paths, for every starting point. [Le Jan–Raimond, Sections 2–3 and Theorem 3.3](https://arxiv.org/pdf/math/0211387v1).
 
@@ -674,7 +679,7 @@ The arguments here hold for all microscopic occupation states. Only their final 
 
 ### 5.1. Uniform fixed-order semigroups and resolvents
 
-For \(\phi\in C(\mathbb T^n)\), write \(\phi_N(z)=\phi(z/L_N)\), and let \(P_{N,t}^{(n)}\) denote the semigroup of the actual auxiliary process in Section 3. Then for every finite \(T\),
+**Lemma 5.1 (uniform microscopic semigroup convergence).** For \(\phi\in C(\mathbb T^n)\), write \(\phi_N(z)=\phi(z/L_N)\), and let \(P_{N,t}^{(n)}\) denote the semigroup of the auxiliary process in Proposition 3.1. Then for every finite \(T\),
 \[
 \sup_{0\le t\le T}\sup_{z\in(\mathbb Z/L_N\mathbb Z)^n}
 \left|P_{N,t}^{(n)}\phi_N(z)
@@ -682,7 +687,7 @@ For \(\phi\in C(\mathbb T^n)\), write \(\phi_N(z)=\phi(z/L_N)\), and let \(P_{N,
 \longrightarrow0.
 \tag{IV.1.1}
 \]
-To prove this without adding an unproved regularity estimate, suppose it fails. Select a subsequence of \(t_N\in[0,T]\) and starting tuples \(z_N\) witnessing a fixed positive error. Compactness gives a further subsequence with \(t_N\to t\) and \(z_N/L_N\to x\). The prescribed-start path convergence (II.12), whose limit is continuous, gives
+*Proof.* Suppose that the assertion fails. Select a subsequence of \(t_N\in[0,T]\) and starting tuples \(z_N\) witnessing a fixed positive error. Compactness gives a further subsequence with \(t_N\to t\) and \(z_N/L_N\to x\). The prescribed-start path convergence (II.12), whose limit is continuous, gives
 \[
 P_{N,t_N}^{(n)}\phi_N(z_N)\longrightarrow (P_t^{(n)}\phi)(x).
 \]
@@ -812,9 +817,9 @@ d_*(\mu,\nu)=\sum_{j\ge1}2^{-j}|\langle\mu-\nu,\varphi_j\rangle|
 \]
 metrizes the weak topology and proves continuity of this path by uniform control of finitely many coordinates and the summable tail. At each fixed time it equals the original process almost surely. Equality at the countable dense times and right-continuity make it indistinguishable from a càdlàg Feller realization. Equivalently, the continuous modification itself has the same finite-dimensional distributions and hence the same Markov semigroup. This proves the required continuous-path law for every deterministic initial measure without an exceptional-set assumption about random kernel evaluations.
 
-### 5.4. Full mass path convergence and the exact initial quantifiers
+### 5.4. Proof of the full mass convergence theorem
 
-Apply the path-transfer theorem in Appendix C to
+*Proof of Theorem 1.* Apply Theorem C.1 to
 \[
 E=\mathcal P(\mathbb T),\qquad
 S_N=\Omega_N,\qquad
@@ -823,7 +828,7 @@ Z_N=\eta_N,\qquad
 P_t=\mathsf P_t.
 \tag{IV.4.1}
 \]
-The reference metric on \(E\) can be the Wasserstein distance of order one associated with the bounded geodesic distance on \(\mathbb T\); on a compact underlying space it metrizes weak convergence. Compactness follows from compactness of \(\mathbb T\). Each \(\Omega_N\) is finite and its generator is exactly the accelerated generator in Section 1. The supplied mass semigroup is conservative and strongly continuous Feller; Section 5.3 verifies its continuous-path realization from every state. Equation (IV.2.9) is precisely the dependency's uniform positive-resolvent hypothesis for every continuous test and every microscopic state.
+The reference metric on \(E\) can be the Wasserstein distance of order one associated with the bounded geodesic distance on \(\mathbb T\); on a compact underlying space it metrizes weak convergence. Compactness follows from compactness of \(\mathbb T\). Each \(\Omega_N\) is finite and its generator is exactly the accelerated generator in Section 1. The supplied mass semigroup is conservative and strongly continuous Feller; Section 5.3 verifies its continuous-path realization from every state. Equation (IV.2.9) is the uniform positive-resolvent hypothesis of Theorem C.1 for every continuous test and every microscopic state.
 
 Finally, a microscopic jump moves mass \(1/N\) from \(x/L_N\) to a nearest neighbor. Coupling the unchanged mass to itself and the moved mass to its new site gives
 \[
@@ -845,9 +850,11 @@ No step used a lower bound on an initial normalized stack mass, a lower bound on
 
 ## 6. References and standard results
 
-The only model-specific literature premises are the following continuum results; their normalization and application are derived in Section 4.
+Section 4 uses the following continuum construction and uniqueness results, with the normalization derived there.
 
 - Y. Le Jan and O. Raimond, *Sticky flows on the circle*, arXiv:math/0211387v1, Sections 2–3, equation (3.6), Theorem 3.3. The exact partition weights, core closure, compatibility, and strong Feller construction are used. [Versioned PDF](https://arxiv.org/pdf/math/0211387v1).
 - C. Howitt and J. Warren, *Consistent families of Brownian motions and stochastic flows of kernels*, *Annals of Probability* 37 (2009), 1237–1272, arXiv:math/0611292v2, Definition 2.1, equations (2.7),(2.9), Theorem 2.1, Proposition 8.1. Only the real continuum martingale problem, its uniqueness for the checked parameter family, and its Feller laws are used. [Versioned PDF](https://arxiv.org/pdf/math/0611292v2).
+
+The target construction is also described in Y. Le Jan and S. Lemaire, [*Products of Beta matrices and sticky flows*](https://arxiv.org/abs/math/0307106), arXiv:math/0307106.
 
 The standard tightness criterion invoked in Section 2 is D. Aldous, *Stopping Times and Tightness*, *Annals of Probability* 6 (1978), 335–340, [DOI](https://doi.org/10.1214/aop/1176995579): compact containment and the displayed stopping-time increment condition give tightness in Skorokhod space. The implication of vanishing jumps under \(J_1\) convergence is explained in Section 2. Other background consists of finite-state Markov chains, their strong Markov property and generator martingales, Dynkin's formula, optional sampling, Doob's inequality, conditional Fubini, Prokhorov and Skorokhod representation on Polish spaces, elementary martingale quadratic covariation, dominated convergence, the monotone-class theorem, Stone–Weierstrass, and elementary properties of closed symmetric forms and their associated semigroups. All model-specific estimates and every passage from these objects to the exact target are either applications of Appendices A–C or arguments displayed above.
