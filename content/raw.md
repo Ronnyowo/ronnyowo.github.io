@@ -5,7 +5,7 @@ The main result and its three dependencies are separate documents.
 Each page has a contents list and a Markdown download.
 Use the print control to save a PDF from your browser.
 
-<div class="notice"><strong>Read the status with the proof.</strong> The original files retain their creation-time labels. The later promotion records state the source campaign's status. AI review does not replace external mathematical review.</div>
+<p class="ai-note"><strong>Read the status with the proof.</strong> The original files retain their creation-time labels. The later promotion records state the source campaign's status. AI review does not replace external mathematical review.</p>
 
 ## Current proof
 

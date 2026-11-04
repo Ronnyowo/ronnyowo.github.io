@@ -19,7 +19,8 @@ The reading site has three sections.
 
 The site follows the reading structure of
 [the transverse-instability project](https://transverse-instability.github.io/).
-Its code and text were written for this project.
+The HTML template and stylesheet come from that site.
+The title, links, and mathematical content are specific to this project.
 
 Start with [the reading guide](content/digested.md).
 The exact theorem is in [STATEMENT.md](records/STATEMENT.md).

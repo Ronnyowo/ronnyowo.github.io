@@ -8,5 +8,7 @@ This file makes no claim about copyright protection for AI-generated text.
 
 Third-party papers are linked, not included.
 MathJax loads from its published CDN package under its own license.
-The reference website is linked as a design reference.
-Its code and assets are not included.
+The HTML template and stylesheet are copied from
+[the transverse-instability website](https://github.com/transverse-instability/transverse-instability.github.io).
+The page content is replaced for this project.
+No additional license is granted here for that third-party frontend.

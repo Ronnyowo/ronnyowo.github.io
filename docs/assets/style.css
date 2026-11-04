@@ -1,47 +1,141 @@
-:root { color-scheme: light; --ink: #202623; --muted: #58625c; --line: #d6ddd7; --link: #215b48; --soft: #f4f7f4; }
-* { box-sizing: border-box; }
-body { margin: 0; background: #fff; color: var(--ink); font: 18px/1.65 Georgia, "Times New Roman", serif; }
-main { width: min(100% - 40px, 790px); margin: 76px auto 48px; }
-a { color: var(--link); text-underline-offset: .18em; overflow-wrap: anywhere; }
-a:hover { text-decoration-thickness: 2px; }
-a:focus-visible, summary:focus-visible, button:focus-visible { outline: 3px solid #ad792e; outline-offset: 4px; }
-.skip { position: absolute; top: -80px; left: 20px; background: white; padding: 8px; }
-.skip:focus { top: 10px; }
-.eyebrow, .menu, .meta, .actions, footer, .toc, .notice { font-family: system-ui, -apple-system, sans-serif; }
-.eyebrow { color: var(--muted); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; margin: 0 0 12px; }
-.site-title { font-size: clamp(1.65rem, 4vw, 2.2rem); font-weight: 400; line-height: 1.22; margin: 0 0 25px; letter-spacing: -.025em; }
-.menu { display: flex; flex-wrap: wrap; gap: 25px; margin: 0 0 28px; font-size: .94rem; }
-.menu a { text-decoration: none; padding-bottom: 6px; }
-.menu a[aria-current="page"] { color: var(--ink); border-bottom: 2px solid var(--link); }
-.rule { height: 1px; background: var(--line); margin: 0 0 32px; }
-h1, h2, h3, h4 { line-height: 1.3; scroll-margin-top: 25px; }
-article h1 { font-size: 1.65rem; font-weight: 400; margin-top: 0; }
-h2 { font-size: 1.32rem; margin-top: 2em; font-weight: 500; }
-h3 { font-size: 1.12rem; margin-top: 1.7em; }
-p, ul, ol { margin: .85em 0; }
-li { margin: .35em 0; }
-.notice { border-left: 3px solid #899c8b; background: var(--soft); padding: 13px 17px; margin: 22px 0; font-size: .83rem; line-height: 1.6; }
-.notice strong { color: #254e38; }
-.meta { color: var(--muted); font-size: .8rem; }
-.actions { display: flex; flex-wrap: wrap; gap: 15px; font-size: .82rem; margin: 20px 0; }
-.actions button { padding: 0; border: 0; background: none; color: var(--link); cursor: pointer; font: inherit; text-decoration: underline; text-underline-offset: .18em; }
-blockquote { margin: 1.2em 0; border-left: 2px solid var(--line); padding: .1em 1em; color: var(--muted); }
-table { border-collapse: collapse; display: block; overflow-x: auto; width: 100%; margin: 1.5em 0; font-size: .9rem; }
-th, td { border-bottom: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; min-width: 110px; }
-th { font-weight: 600; background: var(--soft); }
-pre { overflow-x: auto; padding: 15px; background: var(--soft); border: 1px solid var(--line); font-size: .8rem; line-height: 1.65; }
-code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .83em; overflow-wrap: anywhere; }
-pre code { font-size: inherit; }
-details { border: 1px solid var(--line); padding: 12px 16px; margin: 20px 0; font-size: .85rem; }
-summary { cursor: pointer; font-weight: 500; }
-.toc ul { padding-left: 22px; }
-.toc li { margin: .3em 0; }
-footer { margin-top: 50px; padding-top: 18px; border-top: 1px solid var(--line); font-size: .75rem; color: var(--muted); }
-.math-display, mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
-.math-display { padding: 4px 0; }
-.reader-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.reader-grid > div { border-top: 2px solid var(--line); padding-top: 12px; }
-.reader-grid h2 { margin: 0 0 7px; }
-.reader-grid p { font-size: .92rem; }
-@media (max-width: 600px) { body { font-size: 17px; } main { margin-top: 32px; width: calc(100% - 32px); } .reader-grid { grid-template-columns: 1fr; } .menu { gap: 22px; } th, td { padding: 8px; } }
-@media print { main { width: 100%; margin: 0; } .menu, .actions, .skip, details, footer { display: none; } body { font-size: 11pt; } a { color: inherit; text-decoration: none; } .notice { border: 1px solid #888; } h1, h2, h3 { break-after: avoid; } pre, table { overflow: visible; } }
+
+body {
+  background-color: #ffffff;
+  color: #1a1a1a;
+}
+
+/*.container {*/
+  /*max-width: 730px;*/
+  /*margin: 38px auto;*/
+  /*padding: 0 16px;*/
+  /*font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;*/
+  /*line-height: 1.55;*/
+/*}*/
+
+.container {
+  max-width: 730px;
+  margin: 100px auto 38px;   /* more space on top */
+  /*margin: 38px auto;*/
+  padding: 0 16px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  line-height: 1.55;
+}
+img { max-width: 260px; height: auto; display: block; margin: 16px 0; }
+
+
+h1, h2, h3, h4 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+/* Intro block: text left, photo right */
+.intro {
+  display: flex;
+  gap: 64px;
+  align-items: flex-start;
+}
+
+/* Let the text take remaining width */
+.intro-text {
+  flex: 1 1 0;
+  min-width: 220px;
+  max-width: 730px;
+  padding-top: 14px;   /* nudge text down to align with the photo */
+}
+
+/* Fix a reasonable photo column width */
+.intro-photo {
+  flex: 0 0 240px;
+}
+
+.profile-pic {
+  width: 240px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;   /* optional */
+}
+
+/* Mobile: stack. The photo stays visible (and indexable by Google's
+   mobile-first crawler), just smaller and centred under the text. */
+@media (max-width: 700px) {
+  .intro {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .intro-text {
+    padding-top: 0;
+  }
+  .intro-photo {
+    flex: 0 0 auto;
+    align-self: center;
+  }
+  .profile-pic {
+    width: 180px;
+  }
+}
+
+/* Hide horizontal rules on mobile */
+@media (max-width: 700px) {
+  hr {
+    display: none;
+  }
+}
+
+/* Refined link color — muted academic blue instead of browser default */
+a {
+  color: #4a6fa5;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Strip default blockquote styling (used heavily for paper entries) */
+blockquote {
+  margin: 0.3em 0;
+  padding: 0;
+  border: none;
+}
+
+/* Lighter, more elegant section dividers */
+hr {
+  border: none;
+  border-top: 1px solid #d8cfc4;
+  margin: 2em 0;
+}
+
+/* Slightly refined section headings */
+h2 {
+  letter-spacing: 0.04em;
+  font-weight: normal;
+}
+
+/* CV lists: dates in a fixed-width column, text aligned beside them */
+.cv-list li { padding-left: 7.5em; margin: 0.35em 0; }
+.cv-list .yr { display: inline-block; width: 7.5em; margin-left: -7.5em; }
+
+/* AI proofs */
+.proof-meta { color: #6b6b6b; margin-top: -0.6em; }
+.ai-note {
+  border-left: 3px solid #d8cfc4;
+  padding: 0.2em 0 0.2em 0.9em;
+  color: #555;
+  font-style: italic;
+}
+.proof-status { color: #6b6b6b; }
+.thm, .proof, .abstract { margin: 1.1em 0; }
+.thm-plain > p { font-style: italic; }
+.thm-plain > p strong { font-style: normal; }
+.abstract { font-size: 0.95em; margin: 1.5em 2em; }
+.qed { float: right; }
+.bib li { margin: 0.4em 0; }
+mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; }
+@media (max-width: 700px) { .abstract { margin: 1.5em 0; } }
+
+/* Project menu */
+.menu { margin: 0.4em 0 0; color: #6b6b6b; }
+.menu a.current { color: #1a1a1a; }
+.menu .sep { margin: 0 0.45em; color: #b8ada0; }
+
+/* Tumbleweed at the end of the digested text */
+.tumbleweed img { max-width: 100%; margin: 2.5em auto 0; }
