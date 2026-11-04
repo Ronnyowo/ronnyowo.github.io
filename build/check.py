@@ -29,6 +29,12 @@ class Page(HTMLParser):
 
 def main():
     count = 0
+    raw = (ROOT / "content/raw.md").read_text()
+    tags = re.findall(r"\\tag\{([^}]+)\}", raw)
+    assert len(tags) == len(set(tags)), "Duplicate equation tags in the assembled proof"
+    assert raw.count(r"\[") == raw.count(r"\]"), "Unbalanced display math"
+    assert raw.count(r"\(") == raw.count(r"\)"), "Unbalanced inline math"
+    assert not re.search(r"\\(?:mf|mD|ve|ud)\b", raw), "Project macro in the Raw proof"
     manifest = json.loads((ROOT / "records/manifest.json").read_text())
     for entry in manifest["files"]:
         path = ROOT / entry["path"]

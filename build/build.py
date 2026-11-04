@@ -9,6 +9,7 @@ import zipfile
 from pathlib import Path
 
 import markdown
+from assemble_raw import assemble
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
@@ -69,8 +70,8 @@ def render(source, output, provenance=False, literal_html=False):
     return body, toc
 
 
-def write_page(output, title, source, active="", download=None, record=False, provenance=False):
-    body, toc = render(source, output, provenance, literal_html=record)
+def write_page(output, title, source, active="", download=None, record=False, provenance=False, literal_text=False):
+    body, toc = render(source, output, provenance, literal_html=(record or literal_text))
     link = lambda p: relative(p, output)
     nav = '<span class="sep">·</span>'.join(
         '<a href="{}"{}>{}</a>'.format(link(path), ' class="current" aria-current="page"' if active == name else "", name)
@@ -103,13 +104,14 @@ def write_page(output, title, source, active="", download=None, record=False, pr
 
 
 def main():
+    assemble()
     DOCS.mkdir(exist_ok=True)
     (DOCS / ".nojekyll").write_text("")
     (DOCS / "assets").mkdir(exist_ok=True)
     shutil.copyfile(ROOT / "assets/style.css", DOCS / "assets/style.css")
     for name in ["overview", "digested", "raw", "review"]:
         output = "index.html" if name == "overview" else name + "/index.html"
-        write_page(output, name.title(), (ROOT / f"content/{name}.md").read_text(), name.title())
+        write_page(output, name.title(), (ROOT / f"content/{name}.md").read_text(), name.title(), literal_text=(name == "raw"))
     write_page("provenance/index.html", "Source record", (ROOT / "PROVENANCE.md").read_text(), provenance=True)
     records = sorted((ROOT / "records").rglob("*.md"))
     for path in records:

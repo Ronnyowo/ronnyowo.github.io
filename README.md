@@ -15,7 +15,7 @@ The reading site has three sections.
 
 - **Overview:** the result and contributor.
 - **Digested:** empty until a digested account is written.
-- **Raw:** the AI-written account of the argument.
+- **Raw:** the exact theorem, full AI proof, and three supporting appendices.
 
 The site follows the reading structure of
 [the transverse-instability project](https://transverse-instability.github.io/).
@@ -87,7 +87,10 @@ No site URL is claimed until deployment is complete.
 
 ## Edit
 
-Edit content/ for the guide.
+Edit content/raw-parts/ for the Raw proof.
+The build assembles content/raw.md from these sections.
+Keep content/digested.md empty until a digested account is written.
+Edit content/overview.md for the overview.
 Edit assets/style.css for the layout.
 Then build the site and commit the source and generated files.
 
