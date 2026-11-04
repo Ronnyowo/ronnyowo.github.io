@@ -13,16 +13,16 @@ No audit by a human or a model outside the producing model family is recorded.
 
 The reading site has three sections.
 
-- **Overview:** the result, scope, and review status.
-- **Digested:** a guide to the proof and its dependencies.
-- **Raw:** the full AI proof, supporting proofs, and audit records.
+- **Overview:** the result and contributor.
+- **Digested:** empty until a digested account is written.
+- **Raw:** the AI-written account of the argument.
 
 The site follows the reading structure of
 [the transverse-instability project](https://transverse-instability.github.io/).
 The HTML template and stylesheet come from that site.
 The title, links, and mathematical content are specific to this project.
 
-Start with [the reading guide](content/digested.md).
+Start with [the AI-written account](content/raw.md).
 The exact theorem is in [STATEMENT.md](records/STATEMENT.md).
 The main proof is [C0008, proof v1](records/CANDIDATES/C0008_full_mass_convergence/PROOF_v1.md).
 The source status is in [PROVED.md](records/PROVED.md).
