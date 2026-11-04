@@ -16,10 +16,12 @@ Add a new version for a mathematical change.
 ## Enable GitHub Pages
 
 Open the repository Settings, then Pages.
-Select Deploy from a branch.
-Select main and /docs, then save.
+Select GitHub Actions as the publishing source.
+The Publish the reading site workflow builds and checks the site on each push to main.
+It publishes the generated docs directory after the checks pass.
+The workflow can also be started from the Actions tab.
 
 The site address is https://inclusion-to-sticky-flow.github.io/.
-The address is usable after GitHub Pages completes its first deployment.
+The address serves a new version only after its deployment succeeds.
 Check the deployment status in the repository Actions tab.
 Then open Overview, Digested, and Raw at the public address.
