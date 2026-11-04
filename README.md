@@ -79,8 +79,8 @@ MathJax 3.2.2 loads from jsDelivr to render the mathematics.
 
 ## Publish
 
-The GitHub repository has not yet been created.
-Use [PUBLISHING.md](PUBLISHING.md) to create the public repository and enable GitHub Pages.
+The GitHub repository is [inclusion-to-sticky-flow/inclusion-to-sticky-flow.github.io](https://github.com/inclusion-to-sticky-flow/inclusion-to-sticky-flow.github.io).
+Use [PUBLISHING.md](PUBLISHING.md) to update the repository and enable GitHub Pages.
 GitHub Pages must use the main branch and the /docs folder.
 No site URL is claimed until deployment is complete.
 
