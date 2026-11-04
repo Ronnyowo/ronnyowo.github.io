@@ -1,0 +1,33 @@
+# C0004 verification disposition — v1
+
+Mathematical status: candidate. Administrative decision: the exact complete-theorem version does not satisfy the verification cadence and is not promoted. This is not a refutation, retraction, or route-closing obstruction.
+
+## Exact candidate tuple
+
+- CANDIDATES/C0004_full_mass_convergence/PROOF_v1.md — 59c39b9754f372dc8dcde2c77570dd39ddd8c42503681f61eca98594ed3ac54e.
+- CONTRACT_v1.md — d926624dbea84dab5cf1f74b7a0d64829d3128bf35cc1222cc3b8785e50223a1.
+- BRIEF_v1.md — 7b404adc43b8a9b194b0f9fa8f0105636ee5fbecc9868056254654881d201a18.
+- AUTHOR_INPUTS_v1.md — 99c62c07420ac2895c1ffd42a07ddc0ed024ba651872a85f8a2c5a9cebd56a81.
+
+The fixed target remains STATEMENT-v1, and C0002 is the sole promoted dependency of this exact tuple.
+
+## Recorded checks
+
+- Leakage PASS: AUDITS/C0004_LEAKAGE_v1.md, 447851894dc3825aebd98111a3a1282ac3c8c91242dc7625e52e3afbca5617b2.
+- Hostile audit PASS against AC-004: AUDITS/C0004_HOSTILE_v1.md, d125840d22bc113a8ae92920a2562cbf0d0640ba6db5d3da1be8d9e137104361.
+- Proof-blind reconstruction incomplete: AUDITS/C0004_RECONSTRUCTION_v2.md, 447ac5e23c7a1641f890a816ed6d54c3d8b108041fb34c0ab6bce7d851fb0819. Input manifest: C0004_RECONSTRUCTION_INPUTS_v2.md, 4a5cc787d1026b68f7917fc84f76b6a2f01850c273839b285b3675b26eeb9159. The preserved v1 outputs and the formatting-only changes are bound in that manifest.
+- Comparison incomplete / does not validate: AUDITS/C0004_COMPARISON_v1.md, 20291e486bf7df8105debf4eec369c398940aab981e7ad222af9e29aea3200d0.
+
+Root read all four checks, the readable reconstruction's mathematically identical v1 text and both manifests, and the entire candidate. The fresh comparator checked the exact readable v2. Its report explicitly found the reconstruction's elementary deductions and conditional lift sound at author-level status but its required microscopic limit absent. That statement does not establish the missing limit or certify the candidate's unreconstructed sections.
+
+## Exact missing verification output
+
+The reconstruction leaves its all-fixed-order, all-point-start trace resolvent assertion (T) unproved. It therefore supplies a conditional full-mass path transfer, not the unconditional required theorem. It has not independently reproduced the canonical harmonic correction, its surviving all-block action, localization, positive-layer occupation control, collision passage, or determining microscopic martingale identification. Its use of the brief's definition hints does not fill these omissions.
+
+A partial or conditional reconstruction cannot pass the full cadence. The favorable hostile audit does not replace it. C0004 has never been promoted, so there is no promoted claim to retract. The absence of a reconstructed proof is not evidence that STATEMENT-v1 or the candidate is false, and closes no approach family.
+
+## Next action and anti-shopping rule
+
+Keep this disposition attached to the exact version. Do not resend unchanged or cosmetically edited C0004 to another reconstructor. Independently verified exact auxiliary results may support a materially new full-theorem dependency contract and proof; such results must first undergo their own complete cadence and be promoted. C0005 and C0006 are currently author candidates only. Their extraction alone repairs no failure and advances no status.
+
+The current global checklist is AC-005. No AC-005 supplement is being used to promote this unsuccessful C0004 tuple; it cannot become verifier-backed without the missing reconstruction/comparison requirements. Any future candidate's hostile coverage must include the current checklist. No outside-family audit has run, and no campaign-completion condition has been met.

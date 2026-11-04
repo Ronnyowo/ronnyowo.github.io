@@ -1,0 +1,269 @@
+# C0006 independent proof-blind reconstruction — version 2
+
+Mathematical status: self-audited reconstruction, pending comparison. This document proves the exact finite-system contract from its definitions. It does not assess the unseen candidate proof and does not assert completion of STATEMENT-v1. No promoted campaign dependency or external mathematical source is used.
+
+This is an immutable first write. Any subsequent mathematical revision must use a new versioned file. The companion `C0006_RECONSTRUCTION_INPUTS_v2.md` records the complete exposure and file hashes.
+
+## Claim and parameters
+
+Fix arbitrary integers \(L\ge3\) and \(n\ge2\), positive real numbers \(q,d\), and an integer \(k\) with \(1\le k<L/2\). Write \(\mathbb T_L=\mathbb Z/(L\mathbb Z)\). For \(x,y\in\mathbb T_L\), if \(r\in\{0,\ldots,L-1\}\) represents \(y-x\), set
+\[
+\operatorname{dist}_L(x,y)=\min\{r,L-r\}.
+\]
+On \(\mathbb T_L^n\), the notation \(z+\varepsilon e_i\) means adding \(\varepsilon\in\{-1,1\}\) modulo \(L\) to the \(i\)-th coordinate only. Define
+\[
+R_nF(z)=\sum_{i=1}^n\sum_{\varepsilon\in\{-1,1\}}
+\bigl[F(z+\varepsilon e_i)-F(z)\bigr]
+\]
+and
+\[
+I_nF(z)=\sum_{i=1}^n\sum_{\varepsilon\in\{-1,1\}}
+\sum_{\substack{j=1\\j\ne i}}^n
+\mathbf 1_{\{z_j=z_i+\varepsilon\}}
+\bigl[F(z+\varepsilon e_i)-F(z)\bigr].
+\]
+Let \(Z\) be the continuous-time Markov chain with generator
+\[
+G_n=q(R_n+d^{-1}I_n),
+\]
+started from an arbitrary probability distribution on \(\mathbb T_L^n\). This includes every deterministic starting state. Its filtration \((\mathcal F_t)_{t\ge0}\) is the completed right-continuous natural filtration. Put
+\[
+B_k(z)=\sum_{1\le i<j\le n}
+\mathbf 1_{\{0<\operatorname{dist}_L(z_i,z_j)\le k\}}.
+\]
+We prove that, for every deterministic \(\delta\ge0\) and all bounded nonnegative stopping times \(\tau,\sigma\) satisfying \(\tau\le\sigma\le\tau+\delta\) almost surely,
+\[
+\mathbb E\left[\int_\tau^\sigma B_k(Z_s)\,ds
+\;\middle|\;\mathcal F_\tau\right]
+\le
+\binom n2\left[\frac{2k\delta}{L+1/d}+\frac{Lk}{q}\right]
+\quad\text{almost surely}.
+\]
+
+## 1. An elementary cyclic potential
+
+Set
+\[
+a=d^{-1},\qquad c=\frac{2k}{L+a},\qquad
+\chi(r)=\mathbf 1_{\{0<\operatorname{dist}_L(0,r)\le k\}},
+\qquad
+\jmath(r)=\mathbf 1_{\{r=1\text{ or }r=-1\}},
+\]
+where equalities in the last indicator are in \(\mathbb T_L\). For a function \(h:\mathbb T_L\to\mathbb R\), use the unscaled cyclic Laplacian
+\[
+\Delta h(r)=h(r+1)+h(r-1)-2h(r).
+\]
+The assumption \(k<L/2\) implies that the support of \(\chi\) is the disjoint union of residues \(1,\ldots,k\) and \(L-k,\ldots,L-1\). Consequently,
+\[
+\sum_{r\in\mathbb T_L}\chi(r)=2k.
+\]
+Since \(L\ge3\), the residues \(1,-1\) are distinct and nonzero, so \(\sum_r\jmath(r)=2\). Define the even function
+\[
+b(r)=\chi(r)-c-\frac{ac}{2}\jmath(r).
+\]
+It satisfies
+\[
+\sum_{r\in\mathbb T_L}b(r)=2k-Lc-ac=0
+\]
+and, by the triangle inequality and the positivity of \(a,c\),
+\[
+\sum_{r\in\mathbb T_L}|b(r)|
+\le 2k+Lc+ac=4k.
+\]
+
+Here is an explicit construction of an even solution of \(\Delta h=b\), including its required bound. Write \(b_r=b(r)\) for representatives \(r=0,\ldots,L-1\), and set
+\[
+u_j=\sum_{r=0}^{j-1}b_r\quad(1\le j\le L),
+\qquad
+\overline u=\frac1L\sum_{j=1}^L u_j,
+\qquad s_j=u_j-\overline u.
+\]
+Then \(u_L=0\) and \(\sum_{j=1}^L s_j=0\). Define \(h_*(0)=0\) and
+\[
+h_*(r)=\sum_{j=1}^r s_j\quad(1\le r\le L-1).
+\]
+The same formula at \(r=L\) gives \(h_*(L)=0=h_*(0)\), so it consistently specifies a function on the cycle. For \(1\le r\le L-1\), its cyclic Laplacian is
+\[
+\Delta h_*(r)=s_{r+1}-s_r=u_{r+1}-u_r=b_r,
+\]
+where the formula at \(r=L-1\) uses \(s_L\). At \(r=0\), because \(h_*(L-1)=-s_L\), it gives
+\[
+\Delta h_*(0)=s_1-s_L=u_1-u_L=b_0.
+\]
+
+For any \(j,\ell\in\{1,\ldots,L\}\), the difference \(u_j-u_\ell\) is a signed sum of a consecutive subset of the \(b_r\). Hence
+\[
+\max_j u_j-\min_j u_j\le\sum_{r=0}^{L-1}|b_r|\le4k.
+\]
+The mean \(\overline u\) lies between the minimum and maximum, so \(|s_j|\le4k\) for every \(j\). Every cyclic edge increment of \(h_*\), including the edge from \(L-1\) to \(0\), is one of the \(s_j\). Connecting any two residues by a shortest cycle path, which has at most \(L/2\) edges, proves
+\[
+\operatorname{osc}(h_*):=\max_r h_*(r)-\min_r h_*(r)\le2Lk.
+\]
+Now symmetrize:
+\[
+h(r)=\frac{h_*(r)+h_*(-r)}2.
+\]
+Reflection commutes with \(\Delta\), and \(b\) is even, so \(\Delta h=b\). Also \(h\) is even and each \(h(r)\) lies between the minimum and maximum of \(h_*\). Thus
+\[
+\operatorname{osc}(h)\le2Lk.
+\]
+At zero we have \(b(0)=-c\), so evenness gives
+\[
+2\bigl[h(1)-h(0)\bigr]=\Delta h(0)=-c,
+\qquad h(0)-h(1)=\frac c2.
+\]
+Substituting this relation into the definition of \(b\) yields the exact identity, for every residue \(r\),
+\[
+\Delta h(r)+a\bigl[h(0)-h(1)\bigr]\jmath(r)=\chi(r)-c.
+\tag{1}
+\]
+All assertions in this construction hold for \(L=3\), as well as for larger odd or even \(L\).
+
+## 2. The aggregate pair identity
+
+Put \(m=\binom n2\), and define
+\[
+H(z)=\sum_{1\le i<j\le n}h(z_j-z_i).
+\]
+Evenness makes the summand independent of which of the two labels is written first. For each pair, the two coordinate moves in each direction together produce twice its cyclic Laplacian. Moves of other coordinates do not change that pair summand. Therefore
+\[
+R_nH(z)=2\sum_{1\le i<j\le n}\Delta h(z_j-z_i).
+\tag{2}
+\]
+
+We next compute \(I_nH\) directly, including every third-label contribution. An unordered pair \(\{i,j\}\) contributes to \(I_n\) exactly when its coordinates are neighbors. Since \(L\ge3\), there is then exactly one allowed direction from \(z_i\) to \(z_j\), and exactly one from \(z_j\) to \(z_i\). Write \(z^{i\to j}\) for the state obtained from \(z\) by replacing \(z_i\) by \(z_j\), and define \(z^{j\to i}\) similarly. The total contribution of this unordered adjacent label pair is
+\[
+H(z^{i\to j})+H(z^{j\to i})-2H(z).
+\]
+The summand for the pair \(\{i,j\}\) itself contributes \(2[h(0)-h(1)]\). For each other label \(\ell\), the first move changes the potential of its pair with \(i\) by
+\[
+h(z_j-z_\ell)-h(z_i-z_\ell),
+\]
+and the second move changes the potential of its pair with \(j\) by
+\[
+h(z_i-z_\ell)-h(z_j-z_\ell).
+\]
+These terms cancel. All remaining pair summands are unchanged. This reasoning also applies if several labels occupy the same site: the sum defining \(I_n\) counts each destination label separately, and the preceding grouping is by those same unordered label pairs. It follows that
+\[
+I_nH(z)=2\bigl[h(0)-h(1)\bigr]
+\sum_{1\le i<j\le n}\jmath(z_j-z_i).
+\tag{3}
+\]
+Combining (1), (2), and (3) gives, at every state,
+\[
+G_nH(z)
+=2q\sum_{1\le i<j\le n}\bigl[\chi(z_j-z_i)-c\bigr]
+=2q\bigl[B_k(z)-mc\bigr].
+\]
+Consequently the bounded function
+\[
+V(z)=\frac{H(z)}{2q}
+\]
+satisfies
+\[
+G_nV=B_k-mc.
+\tag{4}
+\]
+Moreover, for any two states \(z,w\), bounding each pair summand separately shows that
+\[
+V(z)-V(w)\le\frac{m}{2q}\operatorname{osc}(h)
+\le\frac{mLk}{q}.
+\]
+Since the state space is finite, its maximum and minimum are attained; hence
+\[
+\operatorname{osc}(V)\le\frac{mLk}{q}.
+\tag{5}
+\]
+This calculation uses the full generator. It invokes no autonomy of any selected labels.
+
+## 3. The conditional stopped generator identity
+
+For completeness, the bounded stopping-time identity needed below follows from finite-state Markov-chain facts as follows. The total jump rate at each state is at most
+\[
+q\bigl[2n+a n(n-1)\bigr].
+\]
+Indeed the independent moves contribute \(2qn\); for each ordered pair of distinct labels, at most one direction has the second label at the destination, since \(L\ge3\). Thus the chain has bounded rates and is nonexplosive. A direct construction is to use a Poisson clock at the displayed upper rate and, at each clock ring, choose a jump with its generator rate divided by that upper rate, using the remaining probability to keep the state unchanged. This construction has finitely many possible clock rings on every bounded interval and gives right-continuous paths with left limits.
+
+On this finite state space, let \(P_t\) denote the transition matrix. The construction just given yields \(P_t=e^{tG_n}\): if the upper rate is \(\Lambda\) and \(K=\mathrm{Id}+G_n/\Lambda\), conditioning on the number of Poisson rings gives
+\[
+P_t=e^{-\Lambda t}\sum_{r=0}^{\infty}\frac{(\Lambda t)^r}{r!}K^r
+=e^{tG_n}.
+\]
+The matrix series converge absolutely, so they can be differentiated term by term. In particular,
+\[
+P_tV-V=\int_0^t P_uG_nV\,du.
+\]
+Using the Markov property and this identity, conditional expectation at a deterministic time \(s\) gives, for \(t\ge s\),
+\[
+\mathbb E\left[V(Z_t)-V(Z_s)-\int_s^tG_nV(Z_u)\,du
+\;\middle|\;\sigma(Z_u:0\le u\le s)\right]=0.
+\]
+The integral can be passed through conditional expectation because its integrand is bounded. Thus
+\[
+M_t=V(Z_t)-V(Z_0)-\int_0^tG_nV(Z_u)\,du
+\]
+is a martingale for the unaugmented natural filtration. It is right-continuous and satisfies, on every deterministic interval \([0,T]\),
+\[
+|M_t|\le2\|V\|_\infty+T\|G_nV\|_\infty.
+\tag{6}
+\]
+The martingale property extends to the completed right-continuous natural filtration used in the claim. To verify this directly, fix \(s<t\) and \(A\in\mathcal F_s\). For every sufficiently small \(h>0\), the event \(A\) belongs to the completion of the unaugmented natural filtration at \(s+h\). Completion by null events does not change the expectation of an integrable variable. The unaugmented martingale property therefore gives
+\[
+\mathbb E\bigl[\mathbf 1_A(M_t-M_{s+h})\bigr]=0.
+\]
+Letting \(h\downarrow0\), right-continuity and (6) give
+\(\mathbb E[\mathbf 1_A(M_t-M_s)]=0\).
+
+Here is also a direct bounded stopping-time argument. Choose a deterministic \(T\) such that \(\tau,\sigma\le T\) almost surely, and for each positive integer \(r\) define the upper dyadic approximations
+\[
+\tau_r=2^{-r}\lceil2^r\tau\rceil,
+\qquad
+\sigma_r=2^{-r}\lceil2^r\sigma\rceil.
+\]
+They are stopping times taking finitely many dyadic values in \([0,T+1]\), with \(\tau_r\le\sigma_r\), and they decrease to \(\tau,\sigma\). For every \(A\in\mathcal F_\tau\), the event \(A\) belongs to \(\mathcal F_{\tau_r}\): for every \(t\), its intersection with \(\{\tau_r\le t\}\) equals its intersection with \(\{\tau\le2^{-r}\lfloor2^rt\rfloor\}\), which is measurable at that latter deterministic time and hence at time \(t\).
+
+Write \(t_j=j2^{-r}\) for the finite dyadic grid covering \([0,T+1]\). The telescoping identity between the two grid-valued stopping times gives
+\[
+\mathbb E\bigl[\mathbf 1_A(M_{\sigma_r}-M_{\tau_r})\bigr]
+=\sum_j\mathbb E\left[
+\mathbf 1_{A\cap\{\tau_r\le t_j<\sigma_r\}}
+(M_{t_{j+1}}-M_{t_j})\right]=0.
+\]
+Every event multiplying the increment belongs to \(\mathcal F_{t_j}\), and every increment has conditional mean zero there. Only grid intervals that could lie between the stopping times need be included, so this is a finite sum. Right-continuity and (6) allow dominated convergence as \(r\to\infty\). Since \(A\in\mathcal F_\tau\) was arbitrary, this proves
+\[
+\mathbb E[M_\sigma-M_\tau\mid\mathcal F_\tau]=0.
+\]
+Expanding the definition of \(M\) gives the required identity
+\[
+\mathbb E\left[\int_\tau^\sigma G_nV(Z_s)\,ds
+\;\middle|\;\mathcal F_\tau\right]
+=\mathbb E[V(Z_\sigma)-V(Z_\tau)\mid\mathcal F_\tau].
+\tag{7}
+\]
+All expectations above exist by finite-state boundedness and boundedness of the stopping times. None of these arguments restricts the initial distribution.
+
+## 4. Conclusion with the stated constants
+
+By (4) and (7),
+\[
+\mathbb E\left[\int_\tau^\sigma B_k(Z_s)\,ds
+\;\middle|\;\mathcal F_\tau\right]
+=mc\,\mathbb E[\sigma-\tau\mid\mathcal F_\tau]
++\mathbb E[V(Z_\sigma)-V(Z_\tau)\mid\mathcal F_\tau].
+\]
+The assumptions on the stopping times imply
+\(\mathbb E[\sigma-\tau\mid\mathcal F_\tau]\le\delta\) almost surely. Pointwise, \(V(Z_\sigma)-V(Z_\tau)\le\operatorname{osc}(V)\), so (5) gives
+\[
+\mathbb E\left[\int_\tau^\sigma B_k(Z_s)\,ds
+\;\middle|\;\mathcal F_\tau\right]
+\le mc\delta+\frac{mLk}{q}
+=\binom n2\left[
+\frac{2k\delta}{L+1/d}+\frac{Lk}{q}
+\right]
+\quad\text{almost surely}.
+\]
+This includes \(\delta=0\), when the integral is zero. Because every parameter, initial distribution, and pair of bounded stopping times was arbitrary within the contract's hypotheses, it establishes all of the displayed contract's quantifiers. There is no dependence on equilibrium, initial separation, a relation between \(n\) and \(q\), or an autonomous selected-label process.
+
+## Dependency and completeness record
+
+The finite cyclic potential, aggregate generator cancellation, finite-state martingale identity, augmentation argument, and bounded stopping-time sampling argument are all proved above. No external theorem is invoked as an unproved mathematical premise, and no literature was consulted. No unresolved mathematical step is being substituted for a proof. This is a self-audited reconstruction only; comparison with the unseen candidate and any promotion decision remain outside this document.

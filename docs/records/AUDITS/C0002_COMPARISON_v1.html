@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="An AI proof record and reading guide for inclusion to sticky Brownian mass flow.">
+<title>C0002 comparison audit — v1 · Inclusion to sticky flow</title>
+<link rel="stylesheet" href="../../assets/style.css">
+<script>
+window.MathJax = {tex: {inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], tags: 'ams'},
+svg: {fontCache: 'global'}, options: {skipHtmlTags: ['script','noscript','style','textarea','pre','code']}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg-full.js"></script>
+</head><body><a class="skip" href="#content">Skip to content</a><main>
+<header><p class="eyebrow">AI proof record · Circle · Finite initial stacks</p>
+<p class="site-title">From inclusion to sticky Brownian mass flow</p>
+<nav class="menu" aria-label="Main navigation"><a href="../../index.html">Overview</a><a href="../../digested/index.html">Digested</a><a href="../../raw/index.html" aria-current="page">Raw</a></nav><div class="rule"></div></header>
+<div class="notice"><strong>Fixed source record.</strong> Creation-time labels remain unchanged. See the <a href="../../review/index.html">review record</a> for later status. No human or outside-family model audit is recorded.</div><div class="actions"><a href="../../downloads/records/AUDITS/C0002_COMPARISON_v1.md" download>Download Markdown</a><button type="button" onclick="window.print()">Print / save PDF</button></div><details><summary>Contents</summary><div class="toc">
+<ul>
+<li><a href="#exact-input-and-exposure-manifest">Exact input and exposure manifest</a></li>
+<li><a href="#complete-claim-hypothesis-object-and-output-mapping">Complete claim, hypothesis, object, and output mapping</a></li>
+<li><a href="#mathematical-verification-of-the-reconstruction">Mathematical verification of the reconstruction</a><ul>
+<li><a href="#1-resolvent-estimates-and-generator-identities">1. Resolvent estimates and generator identities</a></li>
+<li><a href="#2-optional-stopping-and-the-precise-tightness-estimate">2. Optional stopping and the precise tightness estimate</a></li>
+<li><a href="#3-continuity-of-every-possible-limit">3. Continuity of every possible limit</a></li>
+<li><a href="#4-passage-of-the-microscopic-martingales-to-projected-paths">4. Passage of the microscopic martingales to projected paths</a></li>
+<li><a href="#5-laplace-inversion-and-full-law-uniqueness">5. Laplace inversion and full-law uniqueness</a></li>
+</ul>
+</li>
+<li><a href="#mechanism-comparison-and-dependency-audit">Mechanism comparison and dependency audit</a></li>
+<li><a href="#nonblocking-source-notation-observation">Nonblocking source notation observation</a></li>
+<li><a href="#final-version-bound-determination-and-output-integrity">Final version-bound determination and output integrity</a></li>
+</ul>
+</div>
+</details><article id="content"><h1 id="c0002-comparison-audit-v1">C0002 comparison audit — v1</h1>
+<p><strong>Verdict: PASS, bound exclusively to the versions and SHA-256 hashes below.</strong></p>
+<p>The independent reconstruction proves CONTRACT-v1 completely and implements the mechanism specified by BRIEF-v1. Its stopping-time argument differs from the author's cutoff construction, but the accepted brief specifies only the resolvent definition, stopping-time tightness, and path-law identification. Both derivations use that mechanism. The reconstruction adds no hypothesis or campaign dependency and leaves no required path-law step conditional. This verdict follows from the checks below, not from similarity of the final conclusions.</p>
+<p>This is a comparison verdict on an auxiliary candidate. It neither promotes C0002 nor certifies STATEMENT-v1, a leakage audit, a hostile audit, or any system-specific resolvent estimate. No other audit was read.</p>
+<h2 id="exact-input-and-exposure-manifest">Exact input and exposure manifest</h2>
+<p>All relative paths in this document are relative to the exact workspace root:</p>
+<p><code>[private workspace]</code></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Exact source</th>
+<th>Version and role</th>
+<th style="text-align: right;">Bytes</th>
+<th>SHA-256</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S</td>
+<td><code>STATEMENT.md</code></td>
+<td>Frozen statement v1; campaign boundary</td>
+<td style="text-align: right;">6511</td>
+<td><code>ca925b943f2dc5573b840512e12ebd5f38fbdb15df7a6b02c3dd72f7ac698a97</code></td>
+</tr>
+<tr>
+<td>C</td>
+<td><code>CANDIDATES/C0002_resolvent_path_transfer/CONTRACT_v1.md</code></td>
+<td>Exact auxiliary claim contract v1</td>
+<td style="text-align: right;">2121</td>
+<td><code>d42cb0e8db6e9667f77d45f7e4d54994179e48b206fb343af6e50eaf67057c6b</code></td>
+</tr>
+<tr>
+<td>B</td>
+<td><code>CANDIDATES/C0002_resolvent_path_transfer/BRIEF_v1.md</code></td>
+<td>Accepted reconstruction brief v1</td>
+<td style="text-align: right;">351</td>
+<td><code>ec44f79e9849a71bc2cad4d75978ffdde78b8748c83bbeb5e991d4529a92b192</code></td>
+</tr>
+<tr>
+<td>P</td>
+<td><code>CANDIDATES/C0002_resolvent_path_transfer/PROOF_v2.md</code></td>
+<td>Candidate author proof v2</td>
+<td style="text-align: right;">7368</td>
+<td><code>dc06b8b7e052bc994905afaa3b7fe168d7cde233dfa52e5e0355f5458c809a06</code></td>
+</tr>
+<tr>
+<td>A</td>
+<td><code>CANDIDATES/C0002_resolvent_path_transfer/AUTHOR_INPUTS_v1.md</code></td>
+<td>Author exposure manifest v1</td>
+<td style="text-align: right;">1970</td>
+<td><code>a322ca4a495d06567b9e6e0e4aa317fc411d6a1af630dc970354f05078147973</code></td>
+</tr>
+<tr>
+<td>V</td>
+<td><code>CANDIDATES/C0002_resolvent_path_transfer/VERSION_NOTE_v2.md</code></td>
+<td>Binding of P-v2 to C-v1, B-v1, A-v1</td>
+<td style="text-align: right;">548</td>
+<td><code>9d8681bf0fc841aac101a5afc0108101441e83621d6220738d6c6b111647dede</code></td>
+</tr>
+<tr>
+<td>R</td>
+<td><code>AUDITS/C0002_RECONSTRUCTION_v1.md</code></td>
+<td>Independent reconstruction v1</td>
+<td style="text-align: right;">15297</td>
+<td><code>28a6115917c3c793a923dcd34c168f8c17d28fdf1ec23083979c1bd688c624d8</code></td>
+</tr>
+<tr>
+<td>I</td>
+<td><code>AUDITS/C0002_RECONSTRUCTION_INPUTS_v1.md</code></td>
+<td>Reconstruction exposure manifest v1</td>
+<td style="text-align: right;">4187</td>
+<td><code>39fccaa850ba5593aaa475bddd2e3150c39f7a13c8a8d2c02b519ba279a6de75</code></td>
+</tr>
+</tbody>
+</table>
+<p>References such as R:118–120 designate one-based source lines in the exact hashed file. All eight files were read in full and hashed. C, B, P, and R were additionally read with line numbers. All eight hashes and byte counts were rechecked immediately before exclusive creation of this report.</p>
+<p>Promoted dependencies: <strong>none</strong>.</p>
+<p>The comparator's complete source exposure was the eight files above; the fresh-comparator dispatch and its allowlist; general system/developer instructions and tool descriptions; the user's rigorous-mathematics and renderer-safe-LaTeX instructions; workspace/environment metadata; tool results from reading and hashing the same eight files; and this comparator's own analysis and output-generation checks. No inherited campaign conversation was used as mathematical input. No directory listing, workspace search, other candidate, author proof v1, hostile/leakage audit, search transcript, registry, or other audit was consulted. No web page or embedded literature link was opened. No subagent was spawned and no cross-agent mathematical input was received. The final response returns the result to the assigning parent.</p>
+<p>A reports exposure to Kim–Landim source and bibliographic searches; those are author-exposure facts reported by A, not sources consulted or premises adopted here. I's three source hashes agree exactly with S, C, and B, and I's recorded reconstruction hash agrees with R. Those consistencies have been verified. This comparison cannot independently reconstruct an agent's undisplayed access history; the statements about that history in A and I remain the respective agents' declarations.</p>
+<p>A describes the initial v1 freeze. V explicitly binds the current P-v2 to unchanged C-v1 and B-v1 while retaining A-v1. The v1/v2 naming is therefore not an unresolved contract-version mismatch. The assertion that the v1-to-v2 edit was exclusively typographic was not independently diff-checked, because P-v1 was outside the allowlist; the present verdict evaluates P-v2 itself.</p>
+<h2 id="complete-claim-hypothesis-object-and-output-mapping">Complete claim, hypothesis, object, and output mapping</h2>
+<table>
+<thead>
+<tr>
+<th>Contract obligation or quantified object</th>
+<th>Candidate evidence</th>
+<th>Reconstruction evidence and check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Arbitrary compact metric space \(E\), with its specified metric \(d\) (C:6)</td>
+<td>P:13, 35, 37</td>
+<td>R:15 adopts the exact contract; R:139–162 uses a finite metric net and compact containment, with no linear structure or extra geometry. Compact metric spaces are Polish, as required for the probability compactness tools.</td>
+</tr>
+<tr>
+<td>Conservative, strongly continuous Feller semigroup \(P_t\) on \(C(E)\) (C:6)</td>
+<td>P:6, 15, 67</td>
+<td>R:25–42 uses contraction and strong continuity; R:200 uses continuity of resolvent functions; R:271 and 287 use strong continuity and the Feller property. No stronger time regularity or generator-core hypothesis is introduced.</td>
+</tr>
+<tr>
+<td>Specified continuous-path Markov law \(Q_x\) for every \(x\in E\) (C:6)</td>
+<td>P:69</td>
+<td>R:287–289 compares the recursion with this same Markov law. Its continuous-path property is used when identifying laws from coordinate distributions. Existence of this law is a contract assumption, not an additional lemma.</td>
+</tr>
+<tr>
+<td>Every positive integer \(N\), arbitrary finite \(S_N\), microscopic chain \(Z_N\), generator \(A_N\), and semigroup \(T_N\) (C:8)</td>
+<td>P:6–8, 27, 41–45</td>
+<td>R:44–49, 84–97, 166–170, 192–223. No irreducibility, reversibility, stationarity, invariant law, common state space, or uniform rate bound is used. Finite-state nonexplosion and bounded finite-horizon Dynkin martingales are sufficient.</td>
+</tr>
+<tr>
+<td>Arbitrary map \(\pi_N:S_N\to E\), and exactly \(X_N=\pi_N(Z_N)\) (C:8)</td>
+<td>P:6, 35, 46–50</td>
+<td>R:15–21, 53–61, 231. No injectivity, Markov property of the projection, or microscopic reconstruction from \(X_N\) is assumed. A map from a finite discrete space is measurable, and its image of a finite-state chain is cadlag.</td>
+</tr>
+<tr>
+<td>Positive-discount continuum and microscopic resolvent definitions for every positive parameter (C:6, 8)</td>
+<td>P:6–8, 15, 60–67</td>
+<td>R:25–49, 194–208, 256–278. The sign in \(A_NR_\lambda^N=\lambda R_\lambda^N-I\) agrees with the contract; all integrations use \(e^{-\lambda t}\).</td>
+</tr>
+<tr>
+<td>For every \(\lambda&gt;0\) and every \(g\in C(E)\), uniform microscopic resolvent approximation (C:10–11)</td>
+<td>P:6, 15–19, 41–46</td>
+<td>R:63–78 and 200–208. Parameters and finitely many functions are fixed before taking \(N\to\infty\). Using \(g^2\) introduces no assumption because \(g^2\in C(E)\). Real-valued tests suffice; complex tests, if desired, split into real and imaginary parts.</td>
+</tr>
+<tr>
+<td>Supremum over every state of \(S_N\), without a restricted good set (C:11, 16)</td>
+<td>P:22–35</td>
+<td>R:59–78, 122–159. All error bounds are full-state supremum bounds, so they apply even after arbitrary bounded stopping times and under any microscopic initial distribution. No typical-state or equilibrium substitution occurs.</td>
+</tr>
+<tr>
+<td>Maximum projected jump along positive-rate transitions tends to zero, with empty-set value zero (C:12)</td>
+<td>P:37</td>
+<td>R:166–186 defines exactly that maximum, explicitly includes the empty case, and proves the continuous-limit consequence. Omitting \(z=w\) has no effect, since a diagonal pair has projected distance zero and is not an off-diagonal transition.</td>
+</tr>
+<tr>
+<td>Every deterministic initial sequence \(z_N\in S_N\) with \(\pi_N(z_N)\to x\) (C:14)</td>
+<td>P:41, 69</td>
+<td>R:17–21 and 188. The estimates are uniform in initial states, and evaluation at time zero identifies \(X(0)=x\). No distributional regularity or additional convergence rate is used.</td>
+</tr>
+<tr>
+<td>Tightness at stopping times, not merely fixed-time control (C:14; B:7)</td>
+<td>P:22–35</td>
+<td>R:84–162 proves the stronger condition for any two microscopic stopping times \(\tau\leq\sigma\leq\tau+\delta\), with \(\tau\leq T\), uniformly in the initial state. The finite-net probability bound explicitly gives metric increments.</td>
+</tr>
+<tr>
+<td>Every finite horizon and the whole half-line (C:14)</td>
+<td>P:35, 37, 69</td>
+<td>R:84, 162, 186, 291–298. \(T\) is arbitrary; compact containment and the stopping-time bound give the local half-line Aldous criterion. No large-time estimate beyond boundedness and exponentially discounted integration is required.</td>
+</tr>
+<tr>
+<td>Tightness in the Skorokhod \(J_1\) topology and limits supported on continuous paths (C:6, 14)</td>
+<td>P:35–37</td>
+<td>R:162–188 gives tightness and the deterministic time-change jump inequality. This addresses the stated topology, rather than only a weaker path or occupation-measure topology.</td>
+</tr>
+<tr>
+<td>Unique identification of the specified full path law (C:14; B:7)</td>
+<td>P:41–69</td>
+<td>R:192–298 passes resolvent martingale identities with past-cylinder multipliers, inverts the resulting Laplace transforms, recursively identifies all finite-dimensional laws, and then identifies the continuous path law.</td>
+</tr>
+<tr>
+<td>No projected Markov assumption (C:14)</td>
+<td>P:35, 46–50</td>
+<td>R:84–97 uses microscopic optional stopping; R:218–240 removes microscopic approximants by a uniform error before passage to the projected path limit. The limiting transition recursion is proved, not assumed.</td>
+</tr>
+<tr>
+<td>No uniform-in-time microscopic semigroup-convergence hypothesis (C:16)</td>
+<td>P:6–35, 41–69</td>
+<td>R:25–162, 192–298 uses only the stated resolvent convergence. Strong continuity of the fixed target semigroup is not a microscopic semigroup-convergence assumption.</td>
+</tr>
+<tr>
+<td>No promoted campaign dependency (C:4, 18; B:5)</td>
+<td>P:4, 71</td>
+<td>R:13, 302–313 and I. All substantive auxiliary estimates are supplied in R.</td>
+</tr>
+<tr>
+<td>Auxiliary claim only; no establishment of SIP resolvent hypotheses or STATEMENT-v1 (C:3, 16)</td>
+<td>P:71</td>
+<td>R:3, 311–313. The frozen microscopic scaling, all finite-stack initial conditions, target sticky-flow conventions, and full mass-process conclusion in S remain outside this lemma's proved assertions.</td>
+</tr>
+</tbody>
+</table>
+<p>The last row is a scope boundary, not a defect in C0002. Both C and B request the abstract transfer lemma. Neither P nor R presents that lemma as a proof of the campaign's microscopic assumptions, changes S to fit the lemma, or asserts the continuum conventions in S have been checked here.</p>
+<h2 id="mathematical-verification-of-the-reconstruction">Mathematical verification of the reconstruction</h2>
+<h3 id="1-resolvent-estimates-and-generator-identities">1. Resolvent estimates and generator identities</h3>
+<p>R:25–49 is valid. Contraction gives the resolvent norm bounds. For any fixed small \(h&gt;0\), the approximation-of-identity error is bounded by
+\[
+\sup_{0\leq t\leq h}\|P_tg-g\|_\infty
++2\|g\|_\infty e^{-rh}.
+\]
+First choose \(h\) by strong continuity, then send \(r\to\infty\). This proves R:(1) without a rate assumption. Finite-state semigroup differentiation gives
+\[
+\int_0^\infty e^{-rt}A_NT_N(t)b\,dt
+=\left[e^{-rt}T_N(t)b\right]_{0}^{\infty}
++rR_r^Nb
+=rR_r^Nb-b.
+\]
+For fixed \(r\), multiplying the contract's resolvent error by \(r\) still gives an error tending to zero. This proves R:(3) and R:(4). Since \(\|F_N\|_\infty\leq M\) and \(\|H_N\|_\infty\leq M^2\), R:(2) yields the constants \(2rM\) and \(2rM^2\) in R:(5).</p>
+<h3 id="2-optional-stopping-and-the-precise-tightness-estimate">2. Optional stopping and the precise tightness estimate</h3>
+<p>At R:84–97, both stopping times are bounded by \(T+1\). For a fixed finite chain and bounded \(V\), the stopped Dynkin martingale is integrable and has bounded magnitude on that horizon, using the finite number \(\|A_NV\|_\infty\). Optional stopping after multiplication by bounded \(\mathcal F_\tau^N\)-measurable \(B\) proves R:(6). There is no uniform-in-\(N\) optional-stopping assertion here; the uniform bounds are introduced afterward using R:(5).</p>
+<p>Replacing \(G^2\) by \(H_N\) at its two endpoint evaluations costs at most \(2b_N\). The integral costs \(2rM^2\delta\). Replacing the two occurrences of \(G\) in the increment multiplied by \(G_\tau\) costs \(2Ma_N\), and its integral costs \(2rM^2\delta\). Therefore
+\[
+\mathbb E[(G_\sigma-G_\tau)^2]
+\leq 2b_N+4Ma_N+6rM^2\delta,
+\]
+exactly as R:(9) states. Signed real test functions cause no problem: absolute values and \(|G_\tau|\leq M\) justify each bound.</p>
+<p>The limit order at R:124–135 is essential and correct: first take the uniform stopping-time and initial-state suprema; then \(\limsup_N\); then \(\delta\downarrow0\) at fixed \(r\); finally \(r\to\infty\). No interchange requires a convergence rate, and no parameter is silently chosen as a function of \(N\).</p>
+<p>For R:139–159, if \(d(y,y&#x27;)&gt;\varepsilon\) and \(d(y,e_i)&lt;\varepsilon/4\), then
+\[
+d(y&#x27;,e_i)-d(y,e_i)
+\geq d(y,y&#x27;)-2d(y,e_i)&gt;\varepsilon/2.
+\]
+This proves the finite-net implication. The union bound and the second-moment bound give R:(11), with its constant \(4/\varepsilon^2\). All \(g_i\) are bounded continuous because \(E\) is compact.</p>
+<p>The version of Aldous' sufficient criterion permitted by C:18 requires compact containment and vanishing probabilities of increments across stopping times a vanishing distance apart, on every bounded horizon. R:(11) gives precisely these hypotheses, in a filtration containing the projected filtration. Compact containment is automatic. Thus the criterion's use at R:162 is justified. The local half-line form is covered by the same finite-horizon conditions. Finitely many initial indices do not spoil tightness: each individual law is a probability on a Polish space and is tight; finitely many associated compact sets may be combined. The criterion is an expressly permitted background theorem, not a new campaign dependency. P:35 supplies the bibliographic citation to D. Aldous, “Stopping Times and Tightness,” Annals of Probability 6 (1978), 335–340, DOI 10.1214/aop/1176995579; this audit does not claim to have inspected that external text.</p>
+<h3 id="3-continuity-of-every-possible-limit">3. Continuity of every possible limit</h3>
+<p>R:166–170 correctly bounds every actual projected jump by \(j_N\). For each finite chain only finitely many jumps occur on bounded intervals almost surely. Self-transitions or microscopic jumps preserving the projected state give size zero.</p>
+<p>Under the time changes at R:172–182, taking a left limit in the uniform metric bound is legitimate because both paths have left limits and an increasing continuous bijection maps approach from the left to approach from the left. The triangle inequality gives R:(12). Sending \(N\to\infty\) forces every jump of the limiting path to vanish. This argument uses \(J_1\) time changes and would not follow from finite-dimensional convergence alone.</p>
+<p>For a local half-line limit, every finite time lies below an endpoint of continuity of its cadlag path. Applying the finite-interval inequality at such endpoints removes jumps throughout the half-line; right continuity handles time zero. Skorokhod representation is available because the state and Skorokhod spaces are Polish. The usual time-change argument plus uniform continuity of a continuous limit proves uniform convergence on compact intervals, as R:188 states. Evaluation at zero then gives the exact initial point \(x\).</p>
+<h3 id="4-passage-of-the-microscopic-martingales-to-projected-paths">4. Passage of the microscopic martingales to projected paths</h3>
+<p>For fixed \(\lambda\) and \(g\), R:(13) follows directly from full-state resolvent approximation and the finite-state identity already checked. Every cylinder multiplier \(B_N\) in R:212–218 is measurable at the microscopic time \(s\). Hence the Dynkin identity R:(14) is valid without any projected Markov property.</p>
+<p>The replacement error consists of two endpoint errors \(\epsilon_N\) and the integrated drift error \(\lambda(t-s)\epsilon_N\), multiplied by \(\prod_i\|h_i\|_\infty\). This gives R:(15) exactly. It removes every occurrence of a microscopic function that need not factor through \(\pi_N\). After that replacement the expression is a bounded function of the projected path. At continuous limiting paths it is continuous for \(J_1\) convergence, including the integral. Bounded convergence on a Skorokhod coupling therefore proves R:(16).</p>
+<p>This works for the same arbitrary subsequential limiting law and every fixed choice of tests and parameters. It does not extract a different subsequence for different \(g\) or \(\lambda\), or assume a common almost-sure event for an uncountable set of martingales. The conclusions needed later are numerical expectation identities, for which individual validity for every test is sufficient.</p>
+<h3 id="5-laplace-inversion-and-full-law-uniqueness">5. Laplace inversion and full-law uniqueness</h3>
+<p>At R:246–256, \(v\) and \(k\) are bounded continuous, and R:(16) yields the displayed integral equation. Thus the ordinary differentiation and integration by parts used to reach R:(17) are justified. Its terminal term vanishes because \(v\) is bounded and \(\lambda&gt;0\). Boundedness also justifies the exponentially weighted Fubini interchange.</p>
+<p>For fixed \(B,s,g\), the function \(q\) at R:269 is independent of \(\lambda\). The argument proves that its Laplace transform is zero for every positive \(\lambda\). Its continuity follows from path continuity for the first term and norm continuity of \(r\mapsto P_rg\) for the second. Norm continuity at every time follows from strong continuity and the contraction semigroup property.</p>
+<p>The substitution \(a=e^{-r}\) at \(\lambda=n+1\) gives exactly the weight \(a^n\,da\). The bounded density defines a finite signed measure annihilating all polynomials. Stone–Weierstrass, followed by uniqueness of a finite Borel measure from its continuous integrals, makes that measure zero. On \((0,1)\), continuity then makes the density zero pointwise; equivalently \(q(r)=0\) for every finite \(r\geq0\). This verifies the precise uniqueness assertion used in R:(18).</p>
+<p>To see explicitly why this identifies more than one-time marginals, order distinct times \(0\leq t_1&lt;\cdots&lt;t_m\). Apply R:(18) with \(s=t_{m-1}\), \(r=t_m-t_{m-1}\), \(g=h_m\), and \(B=\prod_{i&lt;m}h_i(X(t_i))\). This replaces the last two factors by
+\[
+h_{m-1}(X(t_{m-1}))
+(P_{t_m-t_{m-1}}h_m)(X(t_{m-1})).
+\]
+Their product is a continuous test function by the Feller property, so repeat. The last expectation is fixed by the initial point \(x\) and \(P_t\). Repeated times are handled by multiplying their test functions first. The identical recursion holds under \(Q_x\). Product tests determine laws on \(E^m\) by Stone–Weierstrass; all finite-dimensional distributions therefore agree. The limiting and target laws are supported on continuous paths, whose Borel sigma-field is generated by the rational-time coordinates. This proves equality of their full path laws. Tightness and uniqueness of every subsequential limit yield whole-sequence convergence, as claimed at R:291–298.</p>
+<p>The reconstruction's direct cylinder/FDD argument is complete. It does not need the author's intermediate extension to all bounded variables in the natural filtration; proving the displayed recursion supplies the same required path-law identification obligation directly.</p>
+<h2 id="mechanism-comparison-and-dependency-audit">Mechanism comparison and dependency audit</h2>
+<p>B:7 requires the exact contract, stopping-time tightness, and path-law identification. B:9 gives the sole mechanism hint: “Use the resolvent definition in the contract.” B:11 expressly supplies no other hints. In particular, B does not freeze the author's choice of cutoff functions, supermartingales, or a particular formula for exit probabilities.</p>
+<table>
+<thead>
+<tr>
+<th>Logical step</th>
+<th>P-v2</th>
+<th>R-v1</th>
+<th>Comparison</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Obtain bounded microscopic generator test functions from the given resolvent</td>
+<td>P:6–8</td>
+<td>R:25–78 and 192–210</td>
+<td>Same resolvent identity and full-state approximation.</td>
+</tr>
+<tr>
+<td>Turn resolvent information into stopping-time tightness</td>
+<td>P:13–35 uses cutoff functions, positive discounted supermartingales, optional stopping, and the microscopic strong Markov property</td>
+<td>R:51–162 approximates a function and its square, applies bounded microscopic optional stopping, and controls metric increments with a finite net</td>
+<td>Different valid derivations within the specified resolvent mechanism; both prove the required stopping-time bridge without a new premise.</td>
+</tr>
+<tr>
+<td>Obtain continuous limits from microscopic jump sizes</td>
+<td>P:37</td>
+<td>R:166–188</td>
+<td>Same deterministic \(J_1\) jump argument, expanded in R.</td>
+</tr>
+<tr>
+<td>Pass resolvent Dynkin identities to limit laws</td>
+<td>P:41–50</td>
+<td>R:192–240</td>
+<td>Same argument; R writes the microscopic-to-projected replacement error explicitly.</td>
+</tr>
+<tr>
+<td>Identify the transition semigroup and full path law from resolvent identities</td>
+<td>P:52–69</td>
+<td>R:246–298</td>
+<td>Same positive-discount Laplace mechanism. R uses continuous cylinders and FDD recursion directly; P states conditional expectations in the natural filtration. Both establish the full required law.</td>
+</tr>
+</tbody>
+</table>
+<p>The different tightness derivation does not conceal an unproved analogue of the author's exit step. For comparison, the author's step itself checks out: positivity gives \((A_N-\lambda)h_{N,i}=-\lambda g_i\circ\pi_N\leq0\); its chosen initial state has \(h_{N,i}\leq a\); any attained exit has \(h_{N,i}\geq1-a\). Bounded optional stopping consequently gives
+\[
+(1-a)e^{-\lambda\delta}\mathbb P_z(\tau\leq\delta)
+\leq h_{N,i}(z)\leq a.
+\]
+Finite-state nonexplosion ensures the relevant exit is attained, and the stated order of limits gives the uniform exit estimate. Conditioning on a microscopic stopping time gives its stopping-time form. R instead proves R:(11) directly for two stopping times; it does not invoke the author's estimate, assume the desired tightness, or replace the requirement by deterministic-time convergence. No disputed step was supplied to this isolated comparator, and no unavailable audit was used to infer one. Every substantive step appearing in the candidate's route has nevertheless been checked or matched to a fully proved reconstruction step above.</p>
+<p>Both proofs use only the ordinary background permitted by C:18: finite-state chain calculus; bounded Dynkin martingales and optional stopping; compactness and Stone–Weierstrass; Aldous tightness; Prokhorov and Skorokhod representation; and elementary \(J_1\) properties. The reconstruction proves the particular Laplace uniqueness argument itself. Bounded convergence, finite/exponentially weighted Fubini, and elementary facts about continuous-test determination of finite measures are basic measure-theoretic operations used explicitly, not additional unproved campaign results. The author's use of the microscopic strong Markov property is permitted but is not needed by the reconstruction's optional-stopping estimate. The author's monotone-class formulation can be replaced, as R does, by the proved continuous-product recursion. Neither change adds a dependency or weakens the conclusion.</p>
+<p>No generator-domain theorem, Mosco convergence, microscopic uniform semigroup convergence, equilibrium convergence, SIP estimate, finite-tag theorem, sticky-flow convention check, or result from another candidate is used. There is no dependency inflation or claim of resolving S by this transfer lemma alone.</p>
+<h2 id="nonblocking-source-notation-observation">Nonblocking source notation observation</h2>
+<p>At R:258 and R:265, the source prints a comma before <code>dr</code> rather than the conventional LaTeX spacing command before the differential. The preceding integral equation, the stated integration variable, the limits, and the subsequent change of variables make the intended integrals in \(r\) unambiguous. The derivation above verifies those integrals directly. This is a typography issue, not a missing estimate, a changed claim, or a mathematical gap. No source was edited, and this verdict remains bound to the exact R-v1 bytes.</p>
+<h2 id="final-version-bound-determination-and-output-integrity">Final version-bound determination and output integrity</h2>
+<p><strong>PASS for the exact tuple S-v1, C-v1, B-v1, P-v2, A-v1, V-v2, R-v1, I-v1 listed above.</strong> The reconstruction covers every contract hypothesis, every quantified initial sequence, all finite horizons, stopping-time tightness, continuous subsequential limits, and unique identification of the full law in the specified \(J_1\) topology. Its argument implements the accepted resolvent brief without additional hypotheses or promoted dependencies. There is no substantive claim or mechanism mismatch and no missing mathematical step identified by this comparison.</p>
+<p>This report was checked in memory for paired renderer-safe LaTeX delimiters and balanced mathematical braces, then written once with exclusive-create semantics and read-only file mode. No input file was modified and no preexisting output was overwritten. The output SHA-256 is reported by the creation tool and completion message, avoiding a self-referential hash. Any change to a hashed input requires a new version-bound comparison; this report does not advance campaign or dependency status.</p></article>
+<footer><a href="../../review/index.html">Review status</a> ·
+<a href="../../provenance/index.html">Source record</a> · Repository upload pending<br>
+Proof record: 5 September 2026. Public export: 4 November 2026.</footer>
+</main></body></html>

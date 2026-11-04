@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+build/report.json
+*.zip
+!docs/downloads/proof-records.zip

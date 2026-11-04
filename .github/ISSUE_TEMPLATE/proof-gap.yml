@@ -1,0 +1,31 @@
+name: Report a proof gap
+description: Identify a precise mathematical issue in a proof record.
+title: "[Proof gap] "
+body:
+  - type: input
+    id: version
+    attributes:
+      label: File and version
+      placeholder: C0008 / PROOF_v1.md
+    validations:
+      required: true
+  - type: input
+    id: location
+    attributes:
+      label: Section or equation
+    validations:
+      required: true
+  - type: textarea
+    id: claim
+    attributes:
+      label: Claim and objection
+      description: State the claim and the precise reason for your objection.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Argument or evidence
+      description: Give a proof, a counterexample, or a precise source.
+    validations:
+      required: true

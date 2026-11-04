@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="An AI proof record and reading guide for inclusion to sticky Brownian mass flow.">
+<title>C0002 hostile audit — v1 · Inclusion to sticky flow</title>
+<link rel="stylesheet" href="../../assets/style.css">
+<script>
+window.MathJax = {tex: {inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], tags: 'ams'},
+svg: {fontCache: 'global'}, options: {skipHtmlTags: ['script','noscript','style','textarea','pre','code']}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg-full.js"></script>
+</head><body><a class="skip" href="#content">Skip to content</a><main>
+<header><p class="eyebrow">AI proof record · Circle · Finite initial stacks</p>
+<p class="site-title">From inclusion to sticky Brownian mass flow</p>
+<nav class="menu" aria-label="Main navigation"><a href="../../index.html">Overview</a><a href="../../digested/index.html">Digested</a><a href="../../raw/index.html" aria-current="page">Raw</a></nav><div class="rule"></div></header>
+<div class="notice"><strong>Fixed source record.</strong> Creation-time labels remain unchanged. See the <a href="../../review/index.html">review record</a> for later status. No human or outside-family model audit is recorded.</div><div class="actions"><a href="../../downloads/records/AUDITS/C0002_HOSTILE_v1.md" download>Download Markdown</a><button type="button" onclick="window.print()">Print / save PDF</button></div><details><summary>Contents</summary><div class="toc">
+<ul>
+<li><a href="#exact-input-manifest-and-isolation">Exact input manifest and isolation</a></li>
+<li><a href="#mathematical-checks">Mathematical checks</a><ul>
+<li><a href="#1-quantifiers-constants-and-exit-bound">1. Quantifiers, constants, and exit bound</a></li>
+<li><a href="#2-microscopic-stopping-times-and-general-compact-metric-tightness">2. Microscopic stopping times and general compact metric tightness</a></li>
+<li><a href="#3-vanishing-jumps-and-continuous-limits">3. Vanishing jumps and continuous limits</a></li>
+<li><a href="#4-passing-the-resolvent-martingales">4. Passing the resolvent martingales</a></li>
+<li><a href="#5-conditional-laplace-identity-and-uniqueness-of-the-full-law">5. Conditional Laplace identity and uniqueness of the full law</a></li>
+</ul>
+</li>
+<li><a href="#ac-002-item-by-item-record">AC-002 item-by-item record</a></li>
+<li><a href="#ordinary-literature-and-exact-external-exposure">Ordinary literature and exact external exposure</a></li>
+<li><a href="#version-bound-decision">Version-bound decision</a></li>
+</ul>
+</div>
+</details><article id="content"><h1 id="c0002-hostile-audit-v1">C0002 hostile audit — v1</h1>
+<p>Verdict: <strong>PASS</strong> for the exact auxiliary pair <strong>CONTRACT_v1.md / PROOF_v2.md</strong>, subject to the hypotheses stated in that contract. No blocking mathematical defect was found. This is an audit result only: it neither promotes C0002 nor proves or promotes STATEMENT-v1.</p>
+<p>Auditor: isolated agent <code>/root/c0002_hostile_v1</code>. Audit date: 2026-09-05 UTC. No subagents. Promoted campaign dependencies: none. This artifact is created once and must not be edited; any later audit belongs in a new version.</p>
+<h2 id="exact-input-manifest-and-isolation">Exact input manifest and isolation</h2>
+<p>The only distinct campaign-file contents read were the following four complete inputs, relative to the authorized workspace. The final pinning check uses the subsequently authorized byte-identical AC-002 snapshot described below. SHA-256 hashes are hashes of raw bytes, not normalized text.</p>
+<table>
+<thead>
+<tr>
+<th>Input</th>
+<th>Version/revision</th>
+<th>SHA-256</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STATEMENT.md</td>
+<td>v1</td>
+<td>ca925b943f2dc5573b840512e12ebd5f38fbdb15df7a6b02c3dd72f7ac698a97</td>
+</tr>
+<tr>
+<td>CANDIDATES/C0002_resolvent_path_transfer/CONTRACT_v1.md</td>
+<td>v1</td>
+<td>d42cb0e8db6e9667f77d45f7e4d54994179e48b206fb343af6e50eaf67057c6b</td>
+</tr>
+<tr>
+<td>CANDIDATES/C0002_resolvent_path_transfer/PROOF_v2.md</td>
+<td>v2</td>
+<td>dc06b8b7e052bc994905afaa3b7fe168d7cde233dfa52e5e0355f5458c809a06</td>
+</tr>
+<tr>
+<td>AUDIT_CHECKLIST.md</td>
+<td>AC-002, including AC-001; bytes read at audit start</td>
+<td>20e1958f0c9d28179fa45fcf6aa0a55954538058d220f72c728e624e2b652188</td>
+</tr>
+<tr>
+<td>AUDITS/CHECKLIST_AC002_CANONICAL.md</td>
+<td>Authorized stable replacement path; byte-identical AC-002</td>
+<td>20e1958f0c9d28179fa45fcf6aa0a55954538058d220f72c728e624e2b652188</td>
+</tr>
+</tbody>
+</table>
+<p>Workspace: <code>[private workspace]</code>.</p>
+<p>Administrative path substitution: after the mathematical analysis, an input-stability check hashed the global AUDIT_CHECKLIST.md again. Its digest had changed to f33383b960e9e50f2759ec5550c2d3b00e1359d47c9fba5da1d1b3e5b8f6efdc; the check stopped before creating this artifact. Only that later-file digest, not any later checklist text, was exposed. An administrative parent message then authorized AUDITS/CHECKLIST_AC002_CANONICAL.md solely as a byte-identical replacement for the original AC-002 input and stated that a separate fresh supplemental audit would handle additions. The canonical snapshot hash was independently verified against the original input hash. No later checklist content was read or used as mathematics. This administrative message supplied no mathematical defense.</p>
+<p>No other campaign files, briefs, earlier audits, registry, search discussion, reconstruction, or author defense were read. Ambient system/developer/user instructions and the audit assignment were available. The assignment specified the input allowlist and subjects to test, but supplied no mathematical finding or defense. External exposure was restricted to ordinary Aldous tightness background and is itemized below. No campaign target or candidate solution was searched publicly.</p>
+<p>The claim audited is precisely convergence of the full projected path law for every deterministic sequence of microscopic initial states whose projections converge. The continuous target realization, compact metric state space, uniform resolvent approximation over every microscopic state for every positive discount and continuous test function, and vanishing projected transition sizes are hypotheses. None is established here for the microscopic system in STATEMENT-v1.</p>
+<h2 id="mathematical-checks">Mathematical checks</h2>
+<h3 id="1-quantifiers-constants-and-exit-bound">1. Quantifiers, constants, and exit bound</h3>
+<p>For each fixed positive discount \(\lambda\) and \(g\in C(E)\), finite-state resolvent calculus gives
+\[
+A_N R_\lambda^N(g\circ\pi_N)
+=\lambda R_\lambda^N(g\circ\pi_N)-g\circ\pi_N.
+\]
+There is no missing factor of \(\lambda\) in the proof: when
+\(h_{N,i}=\lambda R_\lambda^N(g_i\circ\pi_N)\), its discounted drift is
+\[
+-\lambda e^{-\lambda t}g_i(X_N(t)).
+\]
+Positivity of the transition semigroup gives \(h_{N,i}\geq 0\), so the discounted process is a nonnegative supermartingale.</p>
+<p>For each \(\varepsilon&gt;0\), compactness yields a finite cover by the required balls. A suitable cutoff is
+\[
+g_i(y)=\min\!\left(1,\max\!\left(0,\frac{4d(y,x_i)}{\varepsilon}-1\right)\right).
+\]
+This construction is valid in an arbitrary metric space, including when a level set is empty. Strong continuity and the contraction bound imply
+\[
+\|\lambda R_\lambda g_i-g_i\|_\infty\longrightarrow0.
+\]
+For a prescribed \(a\in(0,1/4)\), first choose one sufficiently large \(\lambda\) for the finite family, with this error at most \(a/2\). Then choose one sufficiently large \(N\), with the microscopic approximation error after multiplication by \(\lambda\) at most \(a/2\). Thus the proof's bound (2) follows using precisely the contract's quantifiers. No uniformity over an infinite family of cutoffs or over \(\lambda\) is presumed.</p>
+<p>For a start \(z\), choose a cover center with \(d(\pi_N(z),x_i)&lt;\varepsilon/8\). The starting cutoff is zero, hence \(h_{N,i}(z)\leq a\). At the first exit from the open \(\varepsilon\)-ball about \(\pi_N(z)\), the distance to that center is at least \(7\varepsilon/8\); thus \(g_i=1\) and \(h_{N,i}\geq1-a\). A finite-state continuous-time chain with a finite generator is nonexplosive. Its exit time is a microscopic stopping time, and an exit before a finite horizon is attained. Optional stopping at the bounded time \(\tau\wedge\delta\) therefore yields exactly
+\[
+(1-a)e^{-\lambda\delta}\mathbb P_z(\tau\leq\delta)
+\leq h_{N,i}(z)\leq a.
+\]</p>
+<p>The order of limits is essential and is handled correctly. For each fixed \(a\), \(\lambda\) and the lower bound on \(N\) are fixed before \(\delta\downarrow0\). Consequently
+\[
+\lim_{\delta\downarrow0}\limsup_{N\to\infty}
+\sup_{z\in S_N}
+\mathbb P_z\!\left(\sup_{t\leq\delta}d(X_N(t),X_N(0))
+\geq\varepsilon\right)
+\leq\frac{a}{1-a}.
+\]
+Letting \(a\downarrow0\) proves (4). No rate of resolvent convergence is used. Empty exit sets and chains without transitions cause no difficulty.</p>
+<h3 id="2-microscopic-stopping-times-and-general-compact-metric-tightness">2. Microscopic stopping times and general compact metric tightness</h3>
+<p>Write the supremum probability in (4), before taking limits, as \(p_N(\delta,\varepsilon)\). The strong Markov property of \(Z_N\) gives, for every bounded stopping time \(\sigma\) in its filtration,
+\[
+\mathbb P\!\left(
+\sup_{0\leq u\leq\delta}d(X_N(\sigma+u),X_N(\sigma))
+\geq\varepsilon\ \middle|\ \mathcal F_\sigma^{Z_N}
+\right)
+\leq p_N(\delta,\varepsilon).
+\]
+This inequality follows by conditioning on the full microscopic state \(Z_N(\sigma)\). It does not condition only on the projection and does not assert projected Markovianity. It is uniform in the initial state and in \(\sigma\), and implies the usual Aldous condition for all deterministic offsets in \([0,\delta]\), including offsets varying with \(N\). Projected-filtration stopping times are also microscopic-filtration stopping times.</p>
+<p>Compact containment is automatic because every path takes values in the fixed compact space \(E\). The invoked stopping-time criterion applies to general compact metric spaces: these are Polish, and marginal tightness is automatic. Independently checked ordinary background is Aldous, <em>Weak convergence and the general theory of processes</em>, July 1981 draft, Section 4, conditions (4.2)–(4.3), Theorem 4.4 and the paragraph immediately following it, printed pages 25–26. That paragraph explicitly extends the criterion with marginal tightness to Polish state spaces. <a href="https://www.stat.berkeley.edu/~aldous/Papers/weak-gtp.pdf">Aldous manuscript</a>.</p>
+<p>This supplies a direct metric-space justification of the proof's application; a claim that separate coordinate tightness automatically gives joint \(J_1\) tightness is not needed. The cited 1978 article is correctly identified bibliographically, but its full theorem text was not retrieved in this audit; the theorem statement was checked in the author's above manuscript instead. <a href="https://www.stat.berkeley.edu/~pitman/aldbib/bydate.html">Aldous bibliography</a>.</p>
+<p>The stopping-time bound holds on every finite horizon, and the chains are defined beyond that horizon, so terminal-time offsets present no obstruction. The local Skorokhod tightness conclusion on \([0,\infty)\) follows from tightness on all finite horizons.</p>
+<h3 id="3-vanishing-jumps-and-continuous-limits">3. Vanishing jumps and continuous limits</h3>
+<p>Let \(q_N\) be the supremum in contract hypothesis 2. Almost surely each projected jump on every finite horizon has size at most \(q_N\), because microscopic jumps use positive off-diagonal rates and simultaneous transitions have probability zero. Finiteness of the state space prevents explosion.</p>
+<p>The deterministic \(J_1\) assertion used in the proof is correct. If \(y_N\to y\) and the time changes give uniform error \(e_N\to0\), then at every interior jump time \(t\) of \(y\),
+\[
+d(y(t),y(t-))
+\leq 2e_N+
+d\bigl(y_N(\gamma_N(t)),y_N(\gamma_N(t)-)\bigr)
+\leq2e_N+\sup_r d(y_N(r),y_N(r-)).
+\]
+The left-limit estimate follows by approaching \(t\) from below in the uniform bound; increasing continuous time changes preserve the corresponding left limits. Thus a positive limit jump would require positive approximating jumps. One can work on a horizon beyond the proposed jump whose endpoint is a continuity point, so no endpoint assumption is hidden. Since \(q_N\to0\), every subsequential limit is continuous. This argument is specific to \(J_1\) and does not import an invalid continuous-limit assertion from a weaker topology.</p>
+<h3 id="4-passing-the-resolvent-martingales">4. Passing the resolvent martingales</h3>
+<p>For fixed \(\lambda,g\), put \(f_N=R_\lambda^N(g\circ\pi_N)\) and \(f=R_\lambda g\). Positivity/contraction gives
+\[
+\|f_N\|_\infty\leq\frac{\|g\|_\infty}{\lambda},
+\qquad
+\|\lambda f_N-g\circ\pi_N\|_\infty\leq2\|g\|_\infty.
+\]
+Accordingly, the absolute value of (5) on \([0,T]\) is bounded by
+\[
+\frac{2\|g\|_\infty}{\lambda}+2T\|g\|_\infty.
+\]
+These uniform deterministic bounds justify the required expectation limits.</p>
+<p>The target resolvent \(f\) is continuous by the Feller property. Along a Skorokhod representation of a convergent subsequence with continuous limit, paths converge uniformly on compact time intervals. Uniform approximation of \(f_N\) by \(f\circ\pi_N\), uniform continuity of \(f,g\), and the preceding bounds therefore give convergence of both evaluation and integrated terms in (5). For each bounded continuous cylinder function of times at or before \(s\), the microscopic martingale identity passes to the limit. The cylinder algebra generates the natural path filtration: on continuous paths, coordinates on a countable dense set, together with approximation to any endpoint, generate all earlier coordinates. The monotone-class extension consequently proves (6) in that filtration.</p>
+<p>Convergence at time zero gives \(X_0=x\). No density or core assertion for a smooth generator domain is being silently used; every positive resolvent parameter and every member of \(C(E)\) is available directly. Individual martingale identities can be obtained separately for each test; the argument does not require an intersection over uncountably many probability-one events.</p>
+<h3 id="5-conditional-laplace-identity-and-uniqueness-of-the-full-law">5. Conditional Laplace identity and uniqueness of the full law</h3>
+<p>Discounting (6) is justified by integration by parts with its bounded-on-finite-horizons martingale. Given deterministic \(s\) and finite \(v\), conditional expectation gives the displayed identity before (7). The terminal term is bounded by \(e^{-\lambda v}\|f\|_\infty\). The tail of the discounted integral is bounded by \(e^{-\lambda v}\|g\|_\infty/\lambda\). Thus passage to \(v=\infty\) in conditional expectation is valid and proves (7).</p>
+<p>For any bounded real \(\mathcal F_s^X\)-measurable \(H\), the function
+\[
+b(u)=\mathbb E[Hg(X_{s+u})]
+-\mathbb E[H(P_u g)(X_s)]
+\]
+is bounded and continuous. Path continuity and bounded convergence prove the first continuity assertion; strong continuity of the contraction semigroup proves the second. Conditional identity (7) gives zero Laplace transform for every \(\lambda&gt;0\), with Fubini justified by boundedness.</p>
+<p>The proof's elementary uniqueness step is valid. For every integer \(m\geq1\),
+\[
+0=\int_0^\infty e^{-mu}b(u)\,du
+=\int_0^1 v^{m-1}b(-\log v)\,dv.
+\]
+Assign any value at \(v=0\). These identities annihilate every polynomial against a finite signed measure on \([0,1]\). Polynomial density forces that measure to be zero. Changing variables then gives \(b=0\) almost everywhere in \(u\), and continuity gives \(b(u)=0\) for every \(u\geq0\).</p>
+<p>Since this holds for every bounded \(H\), it identifies the conditional transitions on continuous tests. Continuous functions determine probability measures on compact metric \(E\). More explicitly, iteration against products of continuous coordinate tests gives all target finite-dimensional distributions, and Stone–Weierstrass on each finite product \(E^m\) determines the corresponding joint measures. Continuous path laws are determined by their finite-dimensional distributions on a countable dense time set. Hence the limit law is \(Q_x\). This verifies full path-law identification rather than only unconditional one-time marginals.</p>
+<p>The original arbitrary deterministic initial sequence was retained throughout. Every convergent subsequence has the same limit law, so tightness gives the asserted convergence for the whole sequence.</p>
+<h2 id="ac-002-item-by-item-record">AC-002 item-by-item record</h2>
+<p>Every row below records a test or a precise limitation of applicability. It does not discharge or edit any campaign checklist item.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Result in this audit</th>
+<th>Evidence or precise inapplicability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AC-001-01</td>
+<td>Inapplicable to SIP constants; abstract normalization checked</td>
+<td>The auxiliary contract contains no \(d_N,\rho,\alpha\). The factors of \(\lambda\) and the discount sign are verified in check 1. No SIP acceleration or target-form normalization is derived.</td>
+</tr>
+<tr>
+<td>AC-001-02</td>
+<td>Pass within auxiliary scope</td>
+<td>Checks 2–5 prove the full \(E\)-valued path-law conclusion stated in the contract. The proof explicitly declines to establish the SIP resolvent premise or STATEMENT-v1.</td>
+</tr>
+<tr>
+<td>AC-001-03</td>
+<td>Inapplicable as an SIP initial-state verification; no abstract exclusion</td>
+<td>There is no mass, stack-count, or separation condition in C0002. Every deterministic initial sequence with converging projection is retained. This does not certify that the SIP resolvent premise holds for any specified initial class.</td>
+</tr>
+<tr>
+<td>AC-001-04</td>
+<td>Inapplicable</td>
+<td>No deletion consistency or physical-tag construction occurs. The sole Markov argument is for the full finite chain \(Z_N\), as checked in 2.</td>
+</tr>
+<tr>
+<td>AC-001-05</td>
+<td>Inapplicable</td>
+<td>No collision occupation or discontinuous collision indicator is passed to a path-law limit. Exit events are bounded before taking limits; their indicators are not assumed continuous under weak convergence.</td>
+</tr>
+<tr>
+<td>AC-001-06</td>
+<td>Inapplicable as target-construction verification</td>
+<td>The full semigroup \(P_t\) is an input. Check 5 identifies all its conditional transitions; no replacement by pair stickiness occurs. The sticky-flow semigroup in STATEMENT-v1 is not independently constructed here.</td>
+</tr>
+<tr>
+<td>AC-001-07</td>
+<td>Inapplicable</td>
+<td>The cutoffs are ordinary distance cutoffs on \(E\), and resolvents are already defined operators. No intersecting collision-stratum corrector is assumed or constructed.</td>
+</tr>
+<tr>
+<td>AC-001-08</td>
+<td>Pass</td>
+<td>Uniform approximation over all microscopic states is an explicit hypothesis, used without restricting to equilibrium or integrated estimates. Check 1 yields uniform point-start exit control; check 2 preserves it after stopping.</td>
+</tr>
+<tr>
+<td>AC-001-09</td>
+<td>Pass within auxiliary scope</td>
+<td>Every \(g\in C(E)\) and \(\lambda&gt;0\) is available; check 5 establishes uniqueness through resolvent martingales and Laplace transforms. No unproved smooth core is invoked.</td>
+</tr>
+<tr>
+<td>AC-001-10</td>
+<td>Pass</td>
+<td>Check 2 proves stopping-time control and compact containment in general compact metric \(E\); check 3 proves continuous subsequential limits from the exact jump hypothesis.</td>
+</tr>
+<tr>
+<td>AC-001-11</td>
+<td>Pass</td>
+<td>Check 5 tests the Laplace identity against arbitrary past-measurable bounded \(H\), identifies conditional transitions, and then all finite-dimensional distributions and path laws.</td>
+</tr>
+<tr>
+<td>AC-001-12</td>
+<td>Inapplicable to particle/flow conversions; abstract identity checked</td>
+<td>No ordered/labelled particle or kernel-flow conversion is made. The limit is identified with the same input semigroup \(P_t\) and initial point \(x\).</td>
+</tr>
+<tr>
+<td>AC-001-13</td>
+<td>Pass with explicit hypothesis boundary</td>
+<td>The microscopic uniform-resolvent premise is not proved, hidden, or labeled a campaign result. The only non-elementary tightness input is permitted ordinary background, independently checked as documented. There are no promoted campaign dependencies.</td>
+</tr>
+<tr>
+<td>AC-001-14</td>
+<td>Pass for this audit and proof method</td>
+<td>No exact campaign/candidate solution was searched. External lookups concerned only Aldous tightness. The proof uses exit estimates, martingales, and path-law compactness; no Mosco convergence is used.</td>
+</tr>
+<tr>
+<td>AC-001-15</td>
+<td>Pass for this auditor's input boundary</td>
+<td>Only the four permitted logical campaign inputs were read, with the documented byte-identical checklist snapshot substitution. No earlier audit, live-route finding, reconstruction, or author defense entered this audit. The complete ordinary-background exposure is recorded below. This does not certify other agents' histories.</td>
+</tr>
+<tr>
+<td>AC-001-16</td>
+<td>Pass for this artifact's status boundary</td>
+<td>The exact pair and all allowed inputs are pinned by hashes. This audit supplies one PASS only, without promotion, and relies on no promoted or retracted campaign premise. Other protocol gates were not inspected and are not certified here.</td>
+</tr>
+<tr>
+<td>AC-002-17</td>
+<td>Inapplicable</td>
+<td>No almost-sure spatial identity is integrated against a random atomic measure. Identities involving \(X_s\) are deterministic semigroup identities evaluated at a random state, or conditional identities proved by bounded expectations. All discounted Fubini steps have deterministic integrable bounds.</td>
+</tr>
+<tr>
+<td>AC-002-18</td>
+<td>Pass where applicable</td>
+<td>Limit paths are proved continuous in check 3. Countable coordinates and continuity justify filtration/path-law generation in checks 4–5. The proof makes no transition from an unspecified modification to indistinguishability and needs no uncountable intersection of exceptional sets.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ordinary-literature-and-exact-external-exposure">Ordinary literature and exact external exposure</h2>
+<p>The permitted Aldous criterion is the only mathematical literature input checked. The sticky-flow references in STATEMENT-v1 were not consulted, because their constructions are not premises used in proving this abstract conditional lemma.</p>
+<ol>
+<li>Open attempt: <code>https://doi.org/10.1214/aop/1176995579</code>. The web tool reported a non-retryable safe-open failure and returned no article text.</li>
+<li>Web query, exactly: <code>"Stopping Times and Tightness" "1176995579"</code>, without a domain restriction. The result excerpts exposed the following URLs. None of these pages was separately opened, and none is relied on for a mathematical theorem:</li>
+<li><a href="https://www.mendeley.com/catalogue/5860f961-a703-3ae3-ac3e-fe5b85deac44/">Mendeley catalogue</a></li>
+<li><a href="https://portal.mardi4nfdi.de/wiki/Item%3AQ1251416">MaRDI item</a></li>
+<li><a href="https://ftp.math.utah.edu/pub/tex/bib/annprobab1970.pdf">Utah bibliography PDF</a></li>
+<li><a href="https://imstat.org/publications/aop/aop_49_6/aop_49_6.pdf">Annals volume 49 issue 6 PDF</a></li>
+<li><a href="https://citeseerx.ist.psu.edu/document?doi=ee498c3d4bdd9c31474557be36bc56449f0e0803&amp;repid=rep1&amp;type=pdf">CiteSeer bibliography PDF</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/42317399/">PubMed 42317399</a></li>
+<li><a href="https://link.springer.com/article/10.1007/s13398-026-01883-9">Springer article</a></li>
+<li><a href="https://www.imstat.org/publications/aop/aop_48_1/aop_48_1.pdf">Annals volume 48 issue 1 PDF</a></li>
+<li><a href="https://doi.org/10.3934%2Fkrm.2022018">Kinetic and Related Models DOI</a></li>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13272274/">PMC13272274</a></li>
+<li><a href="https://www.maths.usyd.edu.au/u/pubs/publist/preprints/2024/brzezniak-1.pdf">Sydney preprint PDF</a></li>
+<li><a href="https://www.aimsciences.org/article/doi/10.3934/cpaa.2020100">CPAA 2020100</a></li>
+<li><a href="https://www.imstat.org/publications/sts/sts_37_4/sts_37_4.pdf">Statistical Science volume 37 issue 4 PDF</a></li>
+<li><a href="https://www.aimsciences.org/article/doi/10.3934/cpaa.2020241">CPAA 2020241</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/33527236/">PubMed 33527236</a></li>
+<li><a href="https://aimspress.com/article/doi/10.3934/cam.2026010">AIMS CAM 2026010</a></li>
+<li><a href="https://ouci.dntb.gov.ua/works/7WA11Q5l/">OUCI entry</a></li>
+<li><a href="https://www.aimsciences.org/article/doi/10.3934/cpaa.2020100?viewType=HTML">CPAA 2020100 HTML variant</a></li>
+<li>Web query, exactly: <code>"Stopping Times and Tightness" Aldous</code>, restricted to <code>projecteuclid.org</code> and <code>stat.berkeley.edu</code>. Returned result excerpts exposed:</li>
+<li><a href="https://www.stat.berkeley.edu/~aldous/Papers/weak-gtp.pdf">Aldous 1981 manuscript</a></li>
+<li><a href="https://www.stat.berkeley.edu/users/pitman/aldbib/bysubjecta.html">Bibliography by subject, HTML</a></li>
+<li><a href="https://www.stat.berkeley.edu/users/pitman/aldbib/bydate.pdf">Bibliography by date, PDF</a></li>
+<li><a href="https://www.stat.berkeley.edu/~aldous/Misc/statsci_interview.pdf">Aldous interview PDF</a></li>
+<li><a href="https://www.stat.berkeley.edu/~pitman/aldbib/bydate.html">Bibliography by date, HTML</a></li>
+<li><a href="https://www.stat.berkeley.edu/users/pitman/aldbib/bysubjecta.pdf">Bibliography by subject, PDF</a>
+   The bibliography excerpts confirmed the 1978 title, journal volume, and pages. The interview and unrelated bibliography entries were incidental exposure, not premises.</li>
+<li>In the same web call, opened <a href="https://projecteuclid.org/journals/annals-of-probability/volume-6/issue-2/Stopping-Times-and-Tightness/10.1214/aop/1176995579.full">Project Euclid article URL</a>. The tool returned an empty one-line page, with no theorem text.</li>
+<li>Opened the Aldous 1981 manuscript URL through the web tool. It reported a 148-page PDF but supplied no extracted lines. Requested web screenshots at zero-based pages 29 and 30; both failed and exposed no page image.</li>
+<li>Downloaded the same manuscript by <code>curl -L</code> to the exact temporary file listed below. <code>pdftotext</code> on physical page 1 and physical pages 25–32 produced only page-break characters; no textual contents of pages 27–32 were exposed. Rendered and visually inspected physical pages 1, 25, and 26 only. Page 1 identifies David J. Aldous and the July 1981 incomplete monograph draft; pages 25–26 contain the tightness condition, Theorem 4.4, and the explicit Polish-space extension used above. No other page was rendered or read.</li>
+</ol>
+<p>Exact external artifact hashes:</p>
+<table>
+<thead>
+<tr>
+<th>Artifact</th>
+<th style="text-align: right;">Bytes</th>
+<th>SHA-256</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/tmp/C0002_Aldous_weak_gtp_hostile_v1.pdf</td>
+<td style="text-align: right;">5794620</td>
+<td>c8aafdb6f6b6e66ff432996e38fba7c99554e9bd2659697f8122b420c6334b1a</td>
+</tr>
+<tr>
+<td>/tmp/C0002_Aldous_page1_hostile_v1.png</td>
+<td style="text-align: right;">20300</td>
+<td>44901316c495c7571a3c8498a82aa24659491a71317c85f1da18f38922bcc678</td>
+</tr>
+<tr>
+<td>/tmp/C0002_Aldous_page25_hostile_v1.png</td>
+<td style="text-align: right;">76756</td>
+<td>eb024a5af947c4b5323fffab04ebcb82bc2793ee0b7972337eddaff09f93ae97</td>
+</tr>
+<tr>
+<td>/tmp/C0002_Aldous_page26_hostile_v1.png</td>
+<td style="text-align: right;">76238</td>
+<td>e4780ee094c9bebb81ba0ddb0a308d74587d3e1ca4178c1cb07b74cab6878b4a</td>
+</tr>
+</tbody>
+</table>
+<p>Web search excerpts and failed web responses were transient tool outputs; no raw response files were saved, so no content hashes are claimed for them. The exact queries, requested URLs, resulting exposed URLs, and extent of consultation above are the external-exposure record.</p>
+<h2 id="version-bound-decision">Version-bound decision</h2>
+<p><strong>PASS: C0002 CONTRACT-v1 / PROOF-v2, with no promoted campaign dependencies.</strong> The proof establishes the contracted abstract path-transfer implication. The metric-space tightness invocation has been checked against ordinary primary-author background; all other critical steps are verified above. There are no blocking findings and no requested proof revision.</p>
+<p>The uniform microscopic resolvent premise remains an assumption. Verification of that premise for SIP, verification of the concrete sticky-flow target, and all remaining promotion/campaign checks remain outside this audit. This file does not authorize any promotion.</p></article>
+<footer><a href="../../review/index.html">Review status</a> ·
+<a href="../../provenance/index.html">Source record</a> · Repository upload pending<br>
+Proof record: 5 September 2026. Public export: 4 November 2026.</footer>
+</main></body></html>
