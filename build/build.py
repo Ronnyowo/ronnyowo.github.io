@@ -141,10 +141,12 @@ def main():
                 index += f"- [{rel.as_posix()}]({rel.as_posix()}).\n"
     write_page("records/index.html", "Source records", index, "Raw")
     shutil.copyfile(ROOT / "records/manifest.json", DOCS / "downloads/manifest.json")
-    with zipfile.ZipFile(DOCS / "downloads/proof-records.zip", "w", compression=zipfile.ZIP_DEFLATED) as archive:
+    # Store the bytes without compression to keep builds equal across zlib versions.
+    with zipfile.ZipFile(DOCS / "downloads/proof-records.zip", "w", compression=zipfile.ZIP_STORED) as archive:
         for path in sorted(records + [ROOT / "records/manifest.json", ROOT / "PROVENANCE.md"]):
             info = zipfile.ZipInfo(path.relative_to(ROOT).as_posix(), (2026, 11, 4, 0, 0, 0))
-            info.compress_type = zipfile.ZIP_DEFLATED
+            info.compress_type = zipfile.ZIP_STORED
+            info.create_system = 3
             info.external_attr = 0o100644 << 16
             archive.writestr(info, path.read_bytes())
     print(f"Built {len(list(DOCS.rglob('*.html')))} pages and {len(records)} source downloads.")
