@@ -24,7 +24,7 @@ def relative(target, output):
     return os.path.relpath(DOCS / target, (DOCS / output).parent).replace(os.sep, "/")
 
 
-def render(source, output, provenance=False):
+def render(source, output, provenance=False, literal_html=False):
     saved = {}
     # Keep code blocks and code spans out of the math parser.
     pattern = re.compile(r"(?ms)^([~\x60]{3,})[^\n]*\n.*?^\1[ \t]*$|\x60[^\x60\n]+\x60|\\\[.*?\\\]|\\\(.*?\\\)")
@@ -38,7 +38,11 @@ def render(source, output, provenance=False):
         return key
 
     md = markdown.Markdown(extensions=["extra", "toc"], extension_configs={"toc": {"toc_depth": "2-3"}})
-    body = md.convert(pattern.sub(protect, source))
+    prepared = pattern.sub(protect, source)
+    if literal_html:
+        # Source records are text. A bare inequality must not start an HTML tag.
+        prepared = prepared.replace("<", "&lt;")
+    body = md.convert(prepared)
     toc = md.toc
     for key, value in saved.items():
         body = body.replace(key, value)
@@ -62,7 +66,7 @@ def render(source, output, provenance=False):
 
 
 def write_page(output, title, source, active="", download=None, record=False, provenance=False):
-    body, toc = render(source, output, provenance)
+    body, toc = render(source, output, provenance, literal_html=record)
     link = lambda p: relative(p, output)
     nav = "".join(
         '<a href="{}"{}>{}</a>'.format(link(path), ' aria-current="page"' if active == name else "", name)

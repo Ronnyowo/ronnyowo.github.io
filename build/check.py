@@ -38,6 +38,9 @@ def main():
         if "/PROOF_" in entry["path"] or "/CONTRACT_" in entry["path"] or "/BRIEF_" in entry["path"] or entry["path"] == "records/STATEMENT.md":
             assert entry["source_sha256"] == entry["public_sha256"], path
     pages = {p.resolve(): Page(p.read_text()) for p in DOCS.rglob("*.html")}
+    historical = (DOCS / "records/AUDITS/C0008_RECONSTRUCTION_v1.html").read_text()
+    assert 'id="primary-references-consulted"' in historical, "The historical record was truncated."
+    assert "For (0&lt;" in historical, "A source inequality was not escaped."
     for path, page in pages.items():
         text = path.read_text()
         assert "MATHPLACEHOLDER" not in text, path
