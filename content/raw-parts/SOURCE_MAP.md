@@ -41,3 +41,10 @@ No human or outside-family audit is claimed.
 
 The build assembles content/raw.md from the five mathematical part files.
 The webpage template, stylesheet, navigation, and hosting configuration are unchanged.
+
+## Public display
+
+The review page and audit exports are omitted from the public build.
+The review records remain in the repository.
+The Raw revision note has no review link.
+Only this display note changed; the mathematical proof is unchanged.

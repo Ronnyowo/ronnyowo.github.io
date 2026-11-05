@@ -7,6 +7,8 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
+from public_records import is_public_record
+
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 
@@ -40,13 +42,19 @@ def main():
         path = ROOT / entry["path"]
         content = path.read_bytes()
         assert hashlib.sha256(content).hexdigest() == entry["public_sha256"], path
-        assert (DOCS / "downloads" / entry["path"]).read_bytes() == content, path
+        if is_public_record(Path(entry["path"]).relative_to("records")):
+            assert (DOCS / "downloads" / entry["path"]).read_bytes() == content, path
+        else:
+            assert not (DOCS / "downloads" / entry["path"]).exists(), path
+            assert not (DOCS / Path(entry["path"]).with_suffix(".html")).exists(), path
         if "/PROOF_" in entry["path"] or "/CONTRACT_" in entry["path"] or "/BRIEF_" in entry["path"] or entry["path"] == "records/STATEMENT.md":
             assert entry["source_sha256"] == entry["public_sha256"], path
     pages = {p.resolve(): Page(p.read_text()) for p in DOCS.rglob("*.html")}
-    historical = (DOCS / "records/AUDITS/C0008_RECONSTRUCTION_v1.html").read_text()
-    assert 'id="primary-references-consulted"' in historical, "The historical record was truncated."
-    assert "For (0&lt;" in historical, "A source inequality was not escaped."
+    assert not (DOCS / "review").exists(), "Review page was published"
+    public_manifest = json.loads((DOCS / "downloads/manifest.json").read_text())
+    expected = [entry for entry in manifest["files"]
+                if is_public_record(Path(entry["path"]).relative_to("records"))]
+    assert public_manifest["files"] == expected, "Public manifest includes repository records"
     for path, page in pages.items():
         text = path.read_text()
         assert "MATHPLACEHOLDER" not in text, path
@@ -70,8 +78,11 @@ def main():
             text = path.read_text()
             assert not re.search(r"/Users/|gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}", text), path
     with zipfile.ZipFile(DOCS / "downloads/proof-records.zip") as archive:
+        expected_names = {entry["path"] for entry in expected} | {"records/manifest.json"}
+        assert set(archive.namelist()) == expected_names, "ZIP includes repository review records"
         for name in archive.namelist():
-            assert archive.read(name) == (ROOT / name).read_bytes(), name
+            source = DOCS / "downloads/manifest.json" if name == "records/manifest.json" else ROOT / name
+            assert archive.read(name) == source.read_bytes(), name
     print(f"Passed: {len(manifest['files'])} record hashes, {len(pages)} pages, {count} local links, and ZIP contents.")
 
 

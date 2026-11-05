@@ -10,6 +10,7 @@ from pathlib import Path
 
 import markdown
 from assemble_raw import assemble
+from public_records import is_public_record
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
@@ -65,6 +66,18 @@ def render(source, output, provenance=False, literal_html=False):
         return 'href="' + html.escape(path + sep + fragment, quote=True) + '"'
 
     body = re.sub(r'href="([^"]+)"', links, body)
+    # Keep repository review records out of the public reading site.
+    def repository_only(match):
+        href = html.unescape(match[1])
+        if not re.match(r"^[a-zA-Z]+:|^//|^#", href):
+            target = (DOCS / output).parent / href.split("#", 1)[0]
+            target = target.resolve()
+            if target.is_relative_to(DOCS.resolve()):
+                rel = target.relative_to(DOCS.resolve())
+                if rel.parts[0] == "review" or (rel.parts[0] == "records" and len(rel.parts) > 1 and not is_public_record(Path(*rel.parts[1:]).with_suffix(".md"))):
+                    return match[2]
+        return match[0]
+    body = re.sub(r'<a href="([^"]+)">(.*?)</a>', repository_only, body, flags=re.S)
     # The reference uses h2 for the site title and h3 for section headings.
     body = re.sub(r"<(/?)h([1-6])\b", lambda m: "<" + m[1] + "h" + str(min(6, max(3, int(m[2]) + 1))), body)
     return body, toc
@@ -80,8 +93,7 @@ def write_page(output, title, source, active="", download=None, record=False, pr
     notice = ""
     if record:
         notice = ('<p class="ai-note"><strong>Fixed source record.</strong> '
-                  'Creation-time labels remain unchanged. See the '
-                  f'<a href="{link("review/index.html")}">review record</a> for later status. '
+                  'Creation-time labels remain unchanged. '
                   'No human or outside-family model audit is recorded.</p>')
     actions = ""
     if download:
@@ -115,11 +127,19 @@ def main():
     (DOCS / ".nojekyll").write_text("")
     (DOCS / "assets").mkdir(exist_ok=True)
     shutil.copyfile(ROOT / "assets/style.css", DOCS / "assets/style.css")
-    for name in ["overview", "digested", "raw", "review"]:
+    # Remove generated review material; keep its source files in the repository.
+    all_records = sorted((ROOT / "records").rglob("*.md"))
+    shutil.rmtree(DOCS / "review", ignore_errors=True)
+    for path in all_records:
+        if not is_public_record(path.relative_to(ROOT / "records")):
+            rel = path.relative_to(ROOT)
+            (DOCS / rel.with_suffix(".html")).unlink(missing_ok=True)
+            (DOCS / "downloads" / rel).unlink(missing_ok=True)
+    for name in ["overview", "digested", "raw"]:
         output = "index.html" if name == "overview" else name + "/index.html"
         write_page(output, name.title(), (ROOT / f"content/{name}.md").read_text(), name.title(), literal_text=(name == "raw"))
-    write_page("provenance/index.html", "Source record", (ROOT / "PROVENANCE.md").read_text(), provenance=True)
-    records = sorted((ROOT / "records").rglob("*.md"))
+    write_page("provenance/index.html", "Source record", (ROOT / "content/source-record.md").read_text(), provenance=True)
+    records = [p for p in all_records if is_public_record(p.relative_to(ROOT / "records"))]
     for path in records:
         rel = path.relative_to(ROOT).as_posix()
         download = "downloads/" + rel
@@ -136,22 +156,30 @@ def main():
     index = "# Source records\n\nThe current proof versions are listed first.\nOlder versions are retained as history.\nDo not use an older proof in place of the current version.\n\n## Current proofs\n\n"
     for slug, title, path in PROOFS:
         index += f"- [{title}](../raw/{slug}/).\n"
-    for category, label in [("", "Statement and protocol"), ("AUDITS", "Audit records"), ("CANDIDATES", "Proof families and version history")]:
+    for category, label in [("", "Statement and proof"), ("CANDIDATES", "Proof families and version history")]:
         index += "\n## " + label + "\n\n"
         for path in records:
             rel = path.relative_to(ROOT / "records")
             if (category and rel.parts[0] == category) or (not category and len(rel.parts) == 1):
                 index += f"- [{rel.as_posix()}]({rel.as_posix()}).\n"
     write_page("records/index.html", "Source records", index, "Raw")
-    shutil.copyfile(ROOT / "records/manifest.json", DOCS / "downloads/manifest.json")
+    public_manifest = json.loads((ROOT / "records/manifest.json").read_text())
+    public_manifest["files"] = [entry for entry in public_manifest["files"]
+                                if is_public_record(Path(entry["path"]).relative_to("records"))]
+    public_manifest.pop("raw_revision", None)
+    (DOCS / "downloads/manifest.json").write_text(json.dumps(public_manifest, indent=2) + "\n")
     # Store the bytes without compression to keep builds equal across zlib versions.
     with zipfile.ZipFile(DOCS / "downloads/proof-records.zip", "w", compression=zipfile.ZIP_STORED) as archive:
-        for path in sorted(records + [ROOT / "records/manifest.json", ROOT / "PROVENANCE.md"]):
+        for path in sorted(records):
             info = zipfile.ZipInfo(path.relative_to(ROOT).as_posix(), (2026, 11, 4, 0, 0, 0))
             info.compress_type = zipfile.ZIP_STORED
             info.create_system = 3
             info.external_attr = 0o100644 << 16
             archive.writestr(info, path.read_bytes())
+        info = zipfile.ZipInfo("records/manifest.json", (2026, 11, 4, 0, 0, 0))
+        info.create_system = 3
+        info.external_attr = 0o100644 << 16
+        archive.writestr(info, (DOCS / "downloads/manifest.json").read_bytes())
     print(f"Built {len(list(DOCS.rglob('*.html')))} pages and {len(records)} source downloads.")
 
 

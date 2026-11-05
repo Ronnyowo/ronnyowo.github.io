@@ -1,4 +1,4 @@
-This proof was written by an AI model. This is Raw revision 3. See the [review record](../review/). No human or outside-family model audit is recorded.
+This proof was written by an AI model. This is Raw revision 3. No human or outside-family model audit is recorded.
 {: .ai-note }
 
 **Abstract.** We study the symmetric inclusion process on a discrete circle. Assume \(N/L_N\to\rho\in(0,\infty)\) and \(Nd_N\to\Theta\in(0,\infty)\). Under time acceleration \(N^2/d_N\), the empirical mass process converges to the Le Jan–Raimond sticky Brownian mass flow. The initial configurations have a fixed finite bound on the number of isolated occupied sites. Normalized masses may vanish, and limiting stack positions may coincide. The convergence holds in the Skorokhod \(J_1\) topology, with a continuous limit. We first prove path convergence at every fixed order of an auxiliary inclusion process. Harmonic corrections give the splitting rates. A conditional occupation bound controls positive collision layers. A sampling identity then gives uniform convergence of the mass semigroups. This yields tightness and identifies the full mass path law.
