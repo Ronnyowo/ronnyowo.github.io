@@ -24,7 +24,8 @@ The title, links, and mathematical content are specific to this project.
 
 Start with [the AI-written account](content/raw.md).
 The exact theorem is in [STATEMENT.md](records/STATEMENT.md).
-The main proof is [C0008, proof v1](records/CANDIDATES/C0008_full_mass_convergence/PROOF_v1.md).
+The current reading version is [Raw revision 3](records/RAW_PROOF_v3.md).
+The earlier campaign proof is [C0008, proof v1](records/CANDIDATES/C0008_full_mass_convergence/PROOF_v1.md).
 The source status is in [PROVED.md](records/PROVED.md).
 
 ## Result
@@ -57,7 +58,10 @@ See the exact statement for every hypothesis and the full target definition.
 | C0002 | Uniform-resolvent path transfer | Contract v1; proof v2 |
 
 The three auxiliary results have no campaign dependencies.
-The full result uses all three.
+The campaign proof uses all three.
+Raw revision 3 uses the shared sampling lemma and a direct semigroup transfer.
+It retains the complete microscopic convergence proof.
+Its version and final critical reviews are listed in [the review record](content/review.md).
 The source files retain their creation-time labels.
 The later promotion records state their review status.
 

@@ -53,7 +53,7 @@ Let \(R^0\) denote \(R\) on zero extensions of bounded functions on \(E_n\setmin
 
 ### A.2. Harmonic correction theorem
 
-**Theorem A.1 (harmonic corrections and trace estimates).** Under the definitions and hypotheses of Section A.1, there exist finite constants \(C_n\ge1\) and, for every real \(p\ge1\), \(C_{n,p}\ge1\). They depend only on the displayed indices. All six assertions below hold with these constants at the same time. The constants are uniform in lattice positions, separations, partitions, and label subsets. They are also uniform in \(f\) subject to its stated bound \(D\).
+**Theorem A.1 (harmonic corrections and trace estimates).** Under the definitions and hypotheses of Section A.1, there exist finite constants \(C_n\ge1\) and, for every real \(p\ge1\), \(C_{n,p}\ge1\). They depend only on the displayed indices. All six assertions below hold with these constants at the same time. The constants are uniform in lattice positions, separations, partitions, and label subsets. They are also uniform in \(f\) subject to its stated bound \(D\). There is a nonincreasing function \(\omega_n:[0,\infty)\to[0,1]\), depending only on \(n\), with \(\omega_n(r)\to0\) as \(r\to\infty\).
 
 1. **(A-H1)** Absorption is almost sure and \(\sup_{z\in E_n}\mathbb E_z\tau\le c_n\), \(\|U\|\le c_n\), \(\|P\|\le1\). The operator \(Q\) is a conservative jump generator of total rate at most \(2n\). Each nonzero off-diagonal \(Q\)-transition moves each label by at most two sites. Moreover,
    \[
@@ -77,7 +77,7 @@ Let \(R^0\) denote \(R\) on zero extensions of bounded functions on \(E_n\setmin
 3. **(A-H3)** For every real \(R_*\ge16\), every partition and tuple defined above with \(|x_B-x_{B'}|\ge16R_*\) for different blocks, and every allowed \(f\),
    \[
    \left|BH_f(z)-\sum_{B\in\pi}\sum_{\varnothing\ne A\subsetneq B}
-   \kappa_{A,B}\partial_{v_{A,B}}f(z)\right|\le C_nD R_*^{-1/8}.
+   \kappa_{A,B}\partial_{v_{A,B}}f(z)\right|\le C_nD\omega_n(R_*).
    \]
    For a single full block the displayed expression inside absolute values is exactly zero, without a separation parameter. No exact formula at arbitrary finite separations is asserted.
 
@@ -89,8 +89,8 @@ Let \(R^0\) denote \(R\) on zero extensions of bounded functions on \(E_n\setmin
    \]
    At every separated-block tuple in (A-H3),
    \[
-   |\Gamma_0^{ij}(z)-2\mathbf1_{\{z_i=z_j\}}|\le C_nR_*^{-1/2},\qquad
-   |\Gamma_d^{ij}(z)-2\mathbf1_{\{z_i=z_j\}}|\le C_n(R_*^{-1/2}+d).
+   |\Gamma_0^{ij}(z)-2\mathbf1_{\{z_i=z_j\}}|\le C_n\omega_n(R_*),\qquad
+   |\Gamma_d^{ij}(z)-2\mathbf1_{\{z_i=z_j\}}|\le C_n(\omega_n(R_*)+d).
    \]
 
 5. **(A-H5)** For every \(0<d\le d_n\), absorption for \(I+dR\) is almost sure,
@@ -360,97 +360,83 @@ BH_f(o)=\sum_A\kappa_A(M\mathbf1)_Aa_A
 \]
 For the reduced function, the derivative in direction \(v_{A,\{1,\ldots,m\}}\) is \(2c_A\). To see this, translate that vector by \(\mathbf1\). Then use homogeneity on its chamber. On restoring the subtracted affine term, its derivative contributions cancel in complementary pairs, since \(\kappa_A=\kappa_{A^c}\) and the vectors are opposite. Its \(B\)-action is zero by Section A.5. This proves the exact full-block formula with every oriented subset counted separately. In particular there is no additional factor of two or combinatorial exchange factor.
 
-### A.8. Quantitative localization
+### A.8. Localization by coupling
 
-Fix a partition \(\pi\), a separated tuple \(z\) as in Sections A.1–A.2, and \(R_*\ge16\). Write \(R_*=r_0\) in this section to distinguish it from the independent generator \(R\). Order the blocks by their sites \(x_B\). Consider real tuples in which every coordinate belonging to an earlier block is less than every coordinate belonging to a later block.
-
-On this region there are globally defined chamber-affine functions \(f_B\) on \(\mathbb R^B\), each with sum-norm Lipschitz bound \(D\), such that
+Fix a partition and tuple as in (A-H3), with \(R_*\ge16\) and distinct block sites at distance at least \(16R_*\). Order the blocks by their sites. On the region with this strict external block order, there are chamber-affine functions \(f_B:\mathbb R^B\to\mathbb R\), each with sum-norm Lipschitz bound \(D\), such that
 \[
 f(x)=f(0)+\sum_{B\in\pi}f_B(x|_B).
 \tag{A.20}
 \]
-Construct these functions as follows. For an internal ordering of a block, take the coordinates of a chamber gradient of \(f\) in that block, using the fixed external block order. These coordinates do not depend on the orders inside other blocks. An adjacent exchange in another block changes the full gradient only by a multiple of the difference of two unit vectors from that other block. Define \(f_B\) on each of its chambers by the corresponding gradient dotted with its coordinates, with zero intercept. Adjacent formulas agree on their common face by the same gradient-difference property. Formulas at any further intersection agree by successively exchanging equal coordinates. Thus they define a continuous global function. All its gradient coordinates have magnitude at most \(D\). Integrate along a line segment through its finite set of chambers to obtain the Lipschitz bound. Finally, summing these chamber formulas gives (A.20) in each permitted chamber, and continuity gives it on the faces.
+To construct \(f_B\), restrict each chamber gradient of \(f\) to the coordinates in \(B\), using the fixed external order. These coordinates do not depend on internal orders in other blocks: an adjacent exchange there changes the gradient only by a multiple of the difference of two unit vectors in that other block. Use these restricted gradients as the linear formulas for \(f_B\), with zero intercept. Adjacent formulas agree on their common face. Successive exchanges of equal coordinates give agreement at every further intersection. Thus \(f_B\) is continuous. Its gradient coordinates have absolute value at most \(D\). Integration along a segment proves its Lipschitz bound. The chamber formulas then give (A.20).
 
-Evaluate the separate canonical corrections from Sections A.4–A.5 on the subtuples and define on \(S_n\)
+Apply the correction construction to each block subtuple and put
 \[
-W=f+\sum_{B\in\pi}\psi_{f_B},\qquad \delta=H_f-W.
+W=f+\sum_{B\in\pi}\psi_{f_B},\qquad \Delta=H_f-W.
 \]
-For singleton blocks use the convention proved in Section A.11 below; its correction is zero and its affine generator action is zero. By (A.3),
+For singleton blocks use Section A.11; their correction is zero. By (A.3),
 \[
-\|\delta\|_\infty\le C_nD.
+\|\Delta\|_\infty\le C_nD.
 \tag{A.21}
 \]
-When all coordinates of block \(B\) stay within \(4r_0\) of \(x_B\), the blocks remain in their prescribed order and have large intervening gaps. For states whose coordinates are within \(2r_0\) of their respective \(x_B\), all \(Q\)-endpoints remain in that larger region, since individual jumps are at most two. The triggered interaction component lies in one block. On such states \(Q\) acts on sums of block functions as the sum of the isolated block \(Q\)-operators. Equation (A.20) and the harmonicity of each \(H_{f_B}\) therefore imply \(QW=0\), and hence \(Q\delta=0\), throughout the smaller region. This gives bounded stopped harmonicity up to exit from any still smaller region used below.
+If every label lies within \(2R_*\) of its reference block site, every \(Q\)-endpoint lies within \(4R_*\). The blocks remain separated and retain their external order. The interaction component of each attempt lies in one reference block. Thus \(Q\) acts on block sums as the sum of the isolated block generators. Equation (A.20) and \(Q_BH_{f_B}=0\) give \(QW=0\), hence \(Q\Delta=0\), on this region.
 
-First consider coarse tuples with one full stack per block. There \(Q\) is the generator of independent walks of the block centers, each jumping left and right at rate one. If \(z'\) is another coarse tuple shifting every center by at most \(a\le r_0/2\), then
+We first identify the endpoints needed for the \(B\)-row at \(z\). In \(B=RURP|_{S_n}\), the first independent event creates a neighboring pair in one reference block, or ends in \(S_n\). In the latter case the killed potential is zero. During the pure-interaction integral, no new site becomes occupied. The inner \(R\) adds at most one neighboring site. If its event is in the same block, that block has at most three consecutive occupied sites. Absorption gives a full stack or two substacks at distance two. If the event is in another block, the two separate two-site components each absorb to a full stack. Negative terms in either \(R\) omit an event and obey the same bounds. Therefore the signed row has finite support among tuples \(s\) with
 \[
-|\delta(z')-\delta(z)|
-\le C_nD\left(\frac{a+1}{\sqrt{r_0}}+\frac1{r_0}\right).
-\tag{A.22}
+|s_i-z_i|\le2\quad\text{for every }i,
 \]
-To prove this, couple corresponding center walks independently until meeting and synchronously thereafter, independently for different blocks. Before meeting their signed difference is a nearest-neighbor symmetric walk with rate two in each direction. Its probability of not having hit zero by time \(t\), from distance \(a\), is at most \(C(a+1)/\sqrt t\). Indeed, when \(a\le\sqrt t\), stop this difference at zero or the integer \(b=\lceil\sqrt t\rceil+a+1\). Its chance to hit \(b\) before zero is \(a/b\), by the stopped coordinate martingale. Its expected stopped time is at most \(ab/4\), since the generator of \(x(b-x)\) is minus four on the interior. Markov's inequality bounds survival without either exit by \(ab/(4t)\). These two bounds give the assertion; when \(a>\sqrt t\), enlarging the constant makes it at least one. The finite-interval stops have finite expectation. For example, each fixed block of sufficiently many jumps has a fixed positive chance of exit. This justifies optional stopping.
-
-Run the coupling to time \(t=r_0\), stopping each vector of centers on leaving the box with centers within \(r_0\) of their original \(x_B\). Its starting displacement is at most \(r_0/2\). The square maximal inequality for each centered walk, whose variance rate is two, bounds its exit probability by \(C/r_0\). Stopped harmonicity of \(\delta\) applies because exit endpoints still lie within \(2r_0\). On the event that neither vector exits and all corresponding walks meet by time \(r_0\), their terminal tuples are identical. Compare their bounded stopped expectations, use (A.21), and sum the meeting and exit failure bounds over at most \(n\) blocks. This proves (A.22).
-
-We also need a quantitative internal merger estimate. For any two-substack isolated block, starting at a gap bounded by two, let \(\sigma\) be its first full-stack time. More generally the following proof gives a bound with a constant depending on any fixed upper bound for the starting gap. At gaps at least three the gap has rates two in each direction. At gap two the total outward rate is two, and the full-merger rate is at least one by Section A.4. Other transitions only redistribute the left label subset. One may split off rate-one killing at gap two and ignore all additional merger killing. The remaining gap motion is the walk with these interior rates, outward rate two at its boundary two, and killing rate one there. This construction is valid through changes of label subset because the specified rates are independent of that subset; additional killing can only shorten the lifetime. Let \(\zeta\) be the lifetime of this latter walk.
-
-For \(s>0\), let \(q_s\in(0,1)\) be the smaller root of \(2(q_s+q_s^{-1}-2)=s\). Direct substitution into the first-step equations gives
-\[
-\mathbb E_r e^{-s\zeta}=\frac{q_s^{r-2}}{s+3-2q_s},\qquad
-q_s=1+\frac{s}{4}-\sqrt{\frac{s}{2}+\frac{s^2}{16}}.
-\tag{A.23}
-\]
-For completeness, the interior equation is \((s+4)u_r=2u_{r-1}+2u_{r+1}\), and the boundary equation is \((s+3)u_2=1+2u_3\). The displayed bounded solution satisfies both. For uniqueness, stop at time \(t\), a finite spatial boundary, or killing. For a difference of two bounded solutions, the stopped discounted value has constant expectation. Use bounded rates to remove the spatial boundary. Then let \(t\to\infty\). The factor \(e^{-st}\) removes the remaining value. This also identifies the displayed solution with the stated expectation, with \(e^{-s\infty}=0\).
-
-For bounded \(r\) and \(0<s\le1\), (A.23) gives \(1-\mathbb E_r e^{-s\zeta}\le C_n\sqrt s\): use \(1-q_s\le C\sqrt s\), \(1-q_s^{r-2}\le(r-2)(1-q_s)\), and \(s+3-2q_s=1+s+2(1-q_s)\ge1\). The limit as \(s\downarrow0\) also proves almost sure finite killing. Since
-\[
-\mathbf1_{\{\zeta>t\}}\le\frac{1-e^{-\zeta/t}}{1-e^{-1}}\qquad(t>0),
-\]
-we obtain, also for \(0\le t<1\) by enlarging the constant,
-\[
-\mathbb P(\sigma>t)\le\mathbb P(\zeta>t)\le C_n(1+t)^{-1/2}.
-\tag{A.24}
-\]
-
-Let \(s\in S_n\) have every label within two sites of its position in \(z\). Each block is a full stack, with at most one exception. The exceptional block has two substacks at distance two. Run its \(Q\)-chain until the first of internal merger, time \(t=r_0^{1/2}\), and displacement at least \(r=r_0^{3/8}\) from \(s\). Treat a simultaneous merger and displacement exit as a failure. Before displacement exit the blocks remain separated, so the internal motion agrees with the isolated motion in (A.24). The probability of displacement exit by time \(t\) is at most \(C_n(t+1)/r^2\le C_nr_0^{-1/4}\), by (A.1). The probability of failure to merge by time \(t\) without earlier displacement exit is at most the isolated survival bound \(C_nr_0^{-1/4}\). If no block is split, take the merger time to be zero.
-
-On success, the endpoint is coarse. Its center displacement from \(z\) is at most \(r+2\). For \(r_0\ge16\), this is at most \(r_0/2\). At every stopped endpoint, the coordinates are within \(r+4<2r_0\) of the reference sites. Thus bounded stopped harmonicity of \(\delta\) applies. Compare its expectation from \(s\) to \(\delta(z)\), use (A.22) on successful endpoints and (A.21) on failure. This proves
-\[
-|\delta(s)-\delta(z)|\le C_nD r_0^{-1/8}.
-\tag{A.25}
-\]
-Indeed \((r+3)/\sqrt{r_0}\le C r_0^{-1/8}\), and the failure term has the smaller order \(r_0^{-1/4}\). Thus all stopping regions and the constants here are uniform in the actual block positions and sizes.
-
-The row of \(B\) at the reference coarse state \(z\) has finite support only among states \(s\) just described. Check this directly in \(RURP\). The first independent event creates a neighboring pair in one block or ends in \(S_n\). In the second case, its \(U\)-term is zero. During the pure-interaction integral no new site is occupied. In the inner \(R\), a second event in the same block can create at most three consecutive sites. Absorption produces a full stack or two substacks at distance two. A second event in another block leaves two isolated two-site components, both of which absorb to full stacks. Negative terms omit one of these events and satisfy the same support assertion. In all cases each label moves at most two sites from \(z\). For bounded data,
+where each reference block is full except, at most, one block with two substacks at distance two. Also
 \[
 \|B\|\le\|R\|\|U\|\|R\|\|P\|\le16n^2c_n,
+\qquad B\mathbf1=0.
 \]
-and \(B\mathbf1=0\). This also bounds the total variation of each finite signed row. Equation (A.25) therefore gives \(|B\delta(z)|\le C_nD r_0^{-1/8}\).
+In particular, this bounds the total variation of the signed row.
 
-We next evaluate \(BW(z)\). On every configuration visited in the above row calculation, (A.20) and independent absorption in the separated groups give
+For any such local tuple \(s\), run two products of isolated block \(Q_B\)-chains from \(s\) and \(z\). The split block in the first product merges almost surely in finite time. Indeed, above gap two its gap has rates two in each direction. It returns to gap two almost surely: from \(r>2\), the chance to hit \(M>r\) before two is \((r-2)/(M-2)\), by the stopped coordinate martingale. Let \(M\to\infty\). At gap two, the merger rate is at least one and the total attempt rate is at most \(2n\), by Section A.4. Each attempt from gap two therefore gives conditional merger probability at least \(1/(2n)\). An attempt that leaves gap two without merger is followed by a return almost surely. The probability of avoiding merger for \(k\) such trials is at most \((1-1/(2n))^k\). Recurrence and the strong Markov property prove the assertion. These bounds hold after every redistribution of labels. If no block is split, take the merger time to be zero.
+
+Run the products independently until that merger. Each reference block is then a full stack in both products. Couple each corresponding pair of stack centers independently until they meet, then synchronously. Full stacks jump left and right at rate one. The difference of two corresponding centers is recurrent, so each pair meets in finite time almost surely. Use separate clock systems for different reference blocks and fresh exponential clocks at each switch. In the joint filtration, each marginal retains the sum of its isolated block generators.
+
+Let \(T\) be the time by which all corresponding centers have met. Let \(R\) be the largest displacement from the reference block sites by either product up to \(T\). There are finitely many blocks, so \(T<\infty\) almost surely. Bounded jump rates then give \(R<\infty\) almost surely. After separate translations of the reference blocks, this coupling depends only on the partition, the split subset, and the offsets in \(\{-2,-1,0,1,2\}\). There are finitely many such local types for fixed \(n\). Hence
+\[
+\omega_n(r)=\max_{\text{local types}}\mathbb P(R\ge r)
+\longrightarrow0\qquad(r\to\infty).
+\tag{A.22}
+\]
+This defines one nonincreasing function for every partition, reference position, and allowed test \(f\).
+
+Stop the products at \(T\) or when either displacement reaches \(R_*\), whichever occurs first. Before this stop the marginal generators agree with \(Q\). Each product is stable within its reference blocks. All stopped endpoints lie within \(R_*+2<2R_*\) of their reference sites, and different reference blocks remain nonadjacent. Thus the endpoints belong to \(S_n\). The two stopped \(\Delta\)-processes are bounded martingales in the joint filtration. If coupling occurs before displacement exit, their terminal values agree. Bounded optional sampling therefore gives
+\[
+|\Delta(s)-\Delta(z)|\le2\|\Delta\|_\infty\omega_n(R_*).
+\tag{A.25}
+\]
+For the unbounded stop, first impose a deterministic time bound, then use bounded convergence. The signed row has zero mass, so (A.25) yields
+\[
+|B\Delta(z)|\le C_nD\omega_n(R_*).
+\]
+
+It remains to evaluate \(BW(z)\). On every configuration used in this local row calculation, (A.20) and independent block absorption give
 \[
 P_nW=f(0)+\sum_{B\in\pi}P_BH_{f_B}.
 \]
-Here the subscripts specify the particle set, not a new operator definition. After the first independent event only its own block can be transient. Applying the inner \(R\) to this sum gives zero from each other block, since at its full stack \(R_BP_BH_{f_B}=Q_BH_{f_B}=0\). Integrating to absorption therefore gives precisely the killed potential of the affected block applied to its residual. Summing the initiating events proves
+Here the subscripts specify the particle set. After the first independent event, only its own block can be transient. Each other block remains full and satisfies \(R_BP_BH_{f_B}=Q_BH_{f_B}=0\). Thus the inner \(R\) and the killed potential contribute only in the affected block. Summing the initiating events gives the exact factorization
 \[
 BW(z)=\sum_{B\in\pi}B_BH_{f_B}(x_B\mathbf1_B).
 \]
-The single-block formula (A.19), including its restoration of affine terms, evaluates each summand. By (A.20), its directional derivatives are the corresponding derivatives of \(f\) at \(z\). Combining this identity with the bound for \(B\delta\) proves (A-H3) for every parameter in its statement. The one-block equality was already proved in Section A.7.
+The full-block formula (A.19) evaluates each term. By (A.20), its directional derivatives are those of \(f\) at \(z\). The bound for \(B\Delta\) proves (A-H3). A single full block uses the exact formula from Section A.7.
 
 ### A.9. Coordinate covariances
 
-Fix the coordinate test \(f_i(x)=x_i\). At a coarse state in the previous section all local block corrections vanish. Thus \(\delta\) equals \(\psi_{f_i}\) at every coarse state in the stopping box. Apply (A.22) with \(a=1\) to obtain, for every block \(B\) and \(\epsilon\in\{-1,1\}\),
+Fix the coordinate test \(f_i(x)=x_i\). At a tuple with one full stack per reference block, each local correction vanishes. Apply (A.25) with \(s=z+\epsilon\mathbf1_B\), for \(\epsilon\in\{-1,1\}\). This tuple is one of the unsplit local types. Since \(\Delta=\psi_{f_i}\) at both endpoints,
 \[
 H_i(z+\epsilon\mathbf1_B)-H_i(z)
-=\epsilon\mathbf1_{\{i\in B\}}+O(C_n r_0^{-1/2}).
+=\epsilon\mathbf1_{\{i\in B\}}+O(C_n\omega_n(R_*)).
 \tag{A.26}
 \]
 At this separated state these are all off-diagonal \(Q\)-transitions, each at rate one. Multiplying the two increments and summing gives
 \[
-\left|\Gamma_0^{ij}(z)-2\mathbf1_{\{z_i=z_j\}}\right|\le C_nr_0^{-1/2}.
+\left|\Gamma_0^{ij}(z)-2\mathbf1_{\{z_i=z_j\}}\right|\le C_n\omega_n(R_*).
 \tag{A.27}
 \]
-The error from multiplying the two errors is bounded by a constant times \(r_0^{-1}\) and is included in the displayed bound. At an arbitrary state, every coordinate increment of \(H_i\) is at most \(2+2a_n\) along a \(Q\)-jump, by (A.3) and Section A.4. The total rate is at most \(2n\), so \(\Gamma_0\) is bounded everywhere.
+Since \(0\le\omega_n\le1\), products of error terms are included in the same bound. At an arbitrary state, every coordinate increment of \(H_i\) is at most \(2+2a_n\) along a \(Q\)-jump, by (A.3) and Section A.4. The total rate is at most \(2n\), so \(\Gamma_0\) is bounded everywhere.
 
 Couple each perturbed excursion after a fixed initiating step to a pure-interaction excursion until the first additional independent event. Sample the entire pure-interaction chain independently of the extra independent clocks. Continue this sampled pure path if an extra event occurs. The sampled pure chain has the pure-excursion marginal law. If no extra event occurs before absorption, the two endpoints coincide and \(J=0\). On the complementary event \(J\ge1\), the pure endpoint is within \(n\) of the initial tuple coordinatewise, and the perturbed endpoint is within \(n+J\). Their corrected coordinate increments are therefore bounded by \(C_n\) and \(C_n(1+J)\), respectively. It follows that the absolute difference of the products of increments for coordinates \(i,j\) is at most \(C_n[(1+J)^2+1]\mathbf1_{\{J\ge1\}}\). Equation (A.7), summed over the \(2n\) initiating steps in (A.11), gives
 \[
@@ -461,8 +447,8 @@ Absolute convergence follows already from the second-moment instance of (A.13), 
 
 ### A.10. Uniformity of the conclusions
 
-Sections A.4–A.5 apply to each fixed integer \(n\ge2\). Section A.6 applies to every \(0<d\le d_n\) and every real \(p\ge1\). It proves the convergent trace expansion before the coefficient comparison in Section A.7. Section A.8 applies to every partition and every \(R_*\ge16\). Its constants do not depend on the block sites or block sizes. Section A.9 proves the covariance bounds at every state and their estimates at separated states. The cycle matrices in Section A.7 prove only the local coefficient identities on the line.
+Sections A.4–A.5 apply to each fixed integer \(n\ge2\). Section A.6 applies to every \(0<d\le d_n\) and every real \(p\ge1\). It proves the convergent trace expansion before the coefficient comparison in Section A.7. Section A.8 applies to every partition and every \(R_*\ge16\). Its finite set of local coupling types gives one function \(\omega_n\) for all block sites and block sizes. Section A.9 proves the covariance bounds at every state and their estimates at separated states. The cycle matrices in Section A.7 prove only the local coefficient identities on the line.
 
 ### A.11. The one-label case
 
-For \(n=1\), every site is already in \(S_1\), so both absorption times are zero and both potentials vanish. There are no interaction jumps. Therefore \(P=P_d=\operatorname{Id}\), \(Q=T_d=R\), and \(B=0\), for every \(d>0\), in particular \(0<d\le d_1=1\). A chamber-affine function is simply \(f(x)=ax+b\), with \(|a|\le D\), and \(Rf=0\). Its canonical correction is zero. The coordinate has jumps plus and minus one at rate one. Its covariance density is two. Its square maximal displacement is at most \(8t\). Its trace jump moment is \(2|a|^p\le2D^p\). The near set and every split sum are empty. An initiating step has displacement one and is already in \(S_1\), with \(J=\tau_d=0\). These facts prove the full convention in the statement and the singleton-block facts used in Section A.8.
+For \(n=1\), every site is already in \(S_1\), so both absorption times are zero and both potentials vanish. There are no interaction jumps. Therefore \(P=P_d=\operatorname{Id}\), \(Q=T_d=R\), and \(B=0\), for every \(d>0\), in particular \(0<d\le d_1=1\). A chamber-affine function is simply \(f(x)=ax+b\), with \(|a|\le D\), and \(Rf=0\). Its canonical correction is zero. The coordinate has jumps plus and minus one at rate one. Its covariance density is two. Its square maximal displacement is at most \(8t\). Its trace jump moment is \(2|a|^p\le2D^p\). Set \(\omega_1=0\). The near set and every split sum are empty. An initiating step has displacement one and is already in \(S_1\), with \(J=\tau_d=0\). These facts prove the full convention in the statement and the singleton-block facts used in Section A.8.

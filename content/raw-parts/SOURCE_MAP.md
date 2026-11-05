@@ -1,52 +1,43 @@
-# Source map for the Raw proof
+# Source map for Raw revision 3
 
-Status: candidate. This is an editorial presentation of the fixed source proof.
-The edit does not create a new promotion record.
+Date: 2026-11-04.
+This revision gives the complete theorem and proof on the Raw page.
+It replaces the earlier editorial text with the shorter arguments listed below.
+The theorem and its initial-state hypotheses are unchanged.
+The fixed campaign proof and audit records remain unchanged.
 
-| Public section | Fixed source |
+## Mathematical sources
+
+| Public part | Source and change |
 | --- | --- |
-| Statement and Theorem 1 | records/STATEMENT.md |
-| Sections 2–5 | C0008_full_mass_convergence/PROOF_v1.md |
-| Appendix A: statement | C0005_harmonic_correctors/CONTRACT_v2.md |
-| Appendix A: proof | C0005_harmonic_correctors/PROOF_v2.md |
-| Appendix B: statement | C0006_uniform_thin_layers/CONTRACT_v2.md |
-| Appendix B: proof | C0006_uniform_thin_layers/PROOF_v3.md |
-| Appendix C: statement | C0002_resolvent_path_transfer/CONTRACT_v1.md |
-| Appendix C: proof | C0002_resolvent_path_transfer/PROOF_v2.md |
+| Section 1 | The statement in records/STATEMENT.md. Only the abstract and revision note changed. |
+| Sections 2–4 | C0008 proof v1. Section 2 transfers trace tightness through the clock. Section 3 uses the qualitative localization bound. The stopped martingale and target-identification proofs remain complete. |
+| Section 5 | Uniform semigroup convergence, the shared sampling lemma, and Theorem C.1 give mass-path convergence directly. |
+| Appendix A | C0005 proof v2, with a finite-type coupling in place of the power-rate localization argument. The construction, perturbation expansion, and full-block coefficient proof remain. |
+| Appendix B | One general sampling lemma replaces the repeated algebra. The conditional occupation estimate has the original constants. Its full Poisson and optional-sampling proof is included. |
+| Appendix C | A direct semigroup path-transfer theorem replaces the resolvent theorem. Its proof includes tightness, continuity, and identification. |
 
-The C0002, C0005, C0006, and C0008 files are under records/CANDIDATES/.
-The source hashes are in [the manifest](../../records/manifest.json).
-The fixed source status and review records remain in records/.
+The C0005, C0006, and C0008 source files are under records/CANDIDATES/.
+The old C0002 resolvent result remains a historical source record.
+The revised proof does not need it.
+The [manifest](../../records/manifest.json) records the fixed file hashes.
 
-## Editorial changes
+## Scope
 
-The public statement retains all mathematical hypotheses, quantifiers, target definitions, and conclusions.
-The proof retains the mathematical steps and estimates.
-Administrative campaign text is omitted.
-The three supporting statements and proofs appear on the same page.
-The references C0005, C0006, and C0002 become Appendices A, B, and C.
-Equation labels in the appendices have distinct prefixes.
-Equation labels I–IV in the main proof retain their source numbers.
+Proposition 3.1 is proved in Sections 2–4.
+It is not an assumed microscopic convergence result.
+Appendix A proves the retained harmonic-correction estimates.
+Appendix B proves the positive-layer bound used to pass equality indicators.
+Section 4 proves the target identification, including deterministic collision starts.
+Thus the published proof includes the inputs that the earlier simplification report retained as premises.
 
-The line operators are defined before their first use.
-In Appendix A, a block subtuple is distinguished from the block's site.
-Its covariance coupling specifies an unconditional pure-excursion marginal.
-Its martingale bound uses the precise term “predictable quadratic-variation density”.
-In Appendix C, a countable uniformly dense class replaces the ambiguous phrase “countable separating class”.
-Uniform approximation explains why this class determines probability measures.
+## Version and review record
 
-These changes clarify the presentation.
-The editorial checks do not replace a mathematical audit of the theorem.
-No human or outside-family model audit is recorded.
+The full revision is preserved in records/RAW_PROOF_v3.md.
+The separate critical reviews and their exact source hash are linked from content/review.md.
+These reviews concern the final assembled text.
+The reviewers use separate contexts within the producing model family.
+No human or outside-family audit is claimed.
 
-## Editing
-
-The second editorial version adds an abstract and numbered statements for results already proved in the text.
-It adds explicit proof headings and removes the source-map link from the reading page.
-The complete main argument and all three appendices remain on that page.
-The final note in Appendix C now points to the verification of its hypotheses in Section 5.
-This is an editorial change, not a new mathematical audit or promotion.
-
-Edit the separate Markdown files in this directory.
-The build assembles content/raw.md from those parts.
-Keep content/digested.md empty until a digested account is written.
+The build assembles content/raw.md from the five mathematical part files.
+The webpage template, stylesheet, navigation, and hosting configuration are unchanged.

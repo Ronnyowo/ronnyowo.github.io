@@ -228,6 +228,41 @@
       "change": "None; exact bytes"
     },
     {
+      "path": "records/AUDITS/RAW_v3_CORRECTORS.md",
+      "source_sha256": "ce50e475a55cd9c8eb21d36e22623683146b7aeb970021a79ec9ee7db8894337",
+      "public_sha256": "ce50e475a55cd9c8eb21d36e22623683146b7aeb970021a79ec9ee7db8894337",
+      "redactions": 0,
+      "change": "New Raw revision 3 record; exact bytes"
+    },
+    {
+      "path": "records/AUDITS/RAW_v3_IDENTIFICATION.md",
+      "source_sha256": "61437f89f857c59dea792bd8d19ef5a477972f8e292dd051c7964e433d343643",
+      "public_sha256": "61437f89f857c59dea792bd8d19ef5a477972f8e292dd051c7964e433d343643",
+      "redactions": 0,
+      "change": "New Raw revision 3 record; exact bytes"
+    },
+    {
+      "path": "records/AUDITS/RAW_v3_MASS.md",
+      "source_sha256": "077d0f7d65a1723c28ebe956c4775f953bf22d35e006a15763b5ce734a9f1447",
+      "public_sha256": "077d0f7d65a1723c28ebe956c4775f953bf22d35e006a15763b5ce734a9f1447",
+      "redactions": 0,
+      "change": "New Raw revision 3 record; exact bytes"
+    },
+    {
+      "path": "records/AUDITS/RAW_v3_PROBABILITY.md",
+      "source_sha256": "a029e4c7c99cb535db9d80139aa4dd3df455b8c90e1b84e0389653a986d44a82",
+      "public_sha256": "a029e4c7c99cb535db9d80139aa4dd3df455b8c90e1b84e0389653a986d44a82",
+      "redactions": 0,
+      "change": "New Raw revision 3 record; exact bytes"
+    },
+    {
+      "path": "records/AUDITS/RAW_v3_REVIEW_SUMMARY.md",
+      "source_sha256": "2fedf749b607b010fcf0de70602859cfdc0851818a3aa8f2f35b8b01b61fbfc9",
+      "public_sha256": "2fedf749b607b010fcf0de70602859cfdc0851818a3aa8f2f35b8b01b61fbfc9",
+      "redactions": 0,
+      "change": "New Raw revision 3 record; exact bytes"
+    },
+    {
       "path": "records/AUDIT_CHECKLIST.md",
       "source_sha256": "d328652a06ff5ef7fa9ae64a70011a3060b32e80cc23b0afbce4cf1fca97c170",
       "public_sha256": "d328652a06ff5ef7fa9ae64a70011a3060b32e80cc23b0afbce4cf1fca97c170",
@@ -459,11 +494,25 @@
       "change": "None; exact bytes"
     },
     {
+      "path": "records/RAW_PROOF_v3.md",
+      "source_sha256": "b3f3eab86cdacd16a66661f53f0d3d7ac19fc619c72778c86bed63a0ce3b01f0",
+      "public_sha256": "b3f3eab86cdacd16a66661f53f0d3d7ac19fc619c72778c86bed63a0ce3b01f0",
+      "redactions": 0,
+      "change": "New Raw revision 3 record; exact bytes"
+    },
+    {
       "path": "records/STATEMENT.md",
       "source_sha256": "ca925b943f2dc5573b840512e12ebd5f38fbdb15df7a6b02c3dd72f7ac698a97",
       "public_sha256": "ca925b943f2dc5573b840512e12ebd5f38fbdb15df7a6b02c3dd72f7ac698a97",
       "redactions": 0,
       "change": "None; exact bytes"
     }
-  ]
+  ],
+  "raw_revision": {
+    "version": 3,
+    "date": "2026-11-04",
+    "assembled_sha256": "0c2661067d9b9914376e1ffba936ef3088bea332d1be3bf0c96d423bd8d694a9",
+    "proof_record": "records/RAW_PROOF_v3.md",
+    "review_summary": "records/AUDITS/RAW_v3_REVIEW_SUMMARY.md"
+  }
 }

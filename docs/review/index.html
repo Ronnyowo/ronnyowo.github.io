@@ -23,6 +23,54 @@
 <hr>
 
 <h3 id="review-record">Review record</h3>
+<h3 id="raw-revision-3">Raw revision 3</h3>
+<p>Date: 2026-11-04.
+The <a href="../records/RAW_PROOF_v3.html">current proof snapshot</a> contains the complete text now shown on Raw.
+Its assembled source SHA-256 is
+<code>0c2661067d9b9914376e1ffba936ef3088bea332d1be3bf0c96d423bd8d694a9</code>.</p>
+<p>Four new critical agents checked that exact final text in separate contexts.
+Their detailed assignments cover the complete proof.
+No reviewer found a blocking gap in its assigned scope.
+Each review records its scope and the parts it did not check in detail.
+The <a href="../records/AUDITS/RAW_v3_REVIEW_SUMMARY.html">final summary</a> records the combined result and verification limits.</p>
+<table>
+<thead>
+<tr>
+<th>Reviewer</th>
+<th>Detailed scope</th>
+<th>Record</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>Harmonic correction, full-block coefficients, qualitative localization, circle traces, and collision passage</td>
+<td><a href="../records/AUDITS/RAW_v3_CORRECTORS.html">Corrector and trace review</a></td>
+</tr>
+<tr>
+<td>B</td>
+<td>Statement, sampling, occupation, mass semigroups, tightness, continuity, and path-law identification</td>
+<td><a href="../records/AUDITS/RAW_v3_MASS.html">Mass and path review</a></td>
+</tr>
+<tr>
+<td>C</td>
+<td>Collision martingales, form normalization, deterministic collision starts, and circle uniqueness</td>
+<td><a href="../records/AUDITS/RAW_v3_IDENTIFICATION.html">Collision and target review</a></td>
+</tr>
+<tr>
+<td>D</td>
+<td>Additional check of the probability argument and the exact Aldous criterion</td>
+<td><a href="../records/AUDITS/RAW_v3_PROBABILITY.html">Probability and citation check</a></td>
+</tr>
+</tbody>
+</table>
+<p>The final proof includes the microscopic convergence argument and all three supporting appendices.
+It does not assume Proposition 3.1 as an external input.
+The earlier simplification report had a narrower review scope.
+The reviews above concern the final publication text itself.
+All reviewers belong to the producing model family.
+No human or outside-family audit is recorded.</p>
+<h3 id="historical-source-campaign">Historical source campaign</h3>
 <p>The source campaign records C0008 as <strong>promoted</strong>.
 This is a label from its stated AI review procedure.
 It is not a claim of peer review or formal verification.
@@ -81,7 +129,7 @@ That earlier candidate is not a premise of C0008.</p>
 <p>Review the all-order corrector and localization estimates first.
 Then check the accelerated excursion errors and the collision-occupation passage.
 Next check target normalization and circle uniqueness.
-Finally check the mass resolvent lift, path transfer, continuity, and initial conditions.</p>
+Finally check the sampling lift, uniform mass semigroups, Appendix C, and the initial conditions.</p>
 <p>Report the exact file, version, location, and mathematical objection.
 The repository has an issue template for proof gaps.</p>
 <h3 id="export-integrity">Export integrity</h3>

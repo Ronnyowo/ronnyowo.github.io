@@ -28,6 +28,20 @@ Third-party papers are linked through public literature references.
 The mathematical record was not rewritten to change its original labels or prose.
 New guide text is separate from the fixed records.
 
+## Raw revision 3
+
+The Raw page now uses a shorter complete proof, prepared on 2026-11-04.
+The theorem is unchanged.
+The revision replaces the mass resolvent step with uniform semigroup transfer.
+It uses one sampling lemma and qualitative localization.
+The full microscopic convergence and target-identification arguments remain on the page.
+
+The new [proof snapshot](records/RAW_PROOF_v3.md) and [final review summary](records/AUDITS/RAW_v3_REVIEW_SUMMARY.md) are separate records.
+The earlier campaign files were not overwritten.
+The manifest includes the new records and their hashes.
+The final reviews use separate contexts within the same model family.
+They do not constitute a human or outside-family audit.
+
 ## Integrity
 
 Run the repository check to verify every public hash.

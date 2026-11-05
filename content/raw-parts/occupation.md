@@ -1,314 +1,200 @@
-## B. Positive-layer occupation
+## B. Sampling and positive-layer occupation
 
-For every integer \(L\ge3\), let \(\mathbb T_L=\mathbb Z/(L\mathbb Z)\). For \(x,y\in\mathbb T_L\), define
+Fix \(L\ge3\), \(q>0\), and \(d>0\).
+For each population size \(a\ge1\), let
 \[
-\operatorname{dist}_L(x,y)=\min\{r,L-r\},
+G_a=q(R_a+d^{-1}I_a)
 \]
-where \(r\in\{0,\ldots,L-1\}\) represents \(y-x\) modulo \(L\).
+on \(\mathbb T_L^a\), with the operators of Section 1.1.
+Each label jumps independently to each neighbor at rate \(q\), and onto each adjacent label at rate \(q/d\).
+The same parameters \(L,q,d\) are used at every population size.
+For \(L=3\), the two neighbors are distinct and each directed label-pair jump occurs once.
+All these chains have finite state spaces.
 
-For every integer \(n\ge2\), the labelled state space is \(\mathbb T_L^n\). If \(z=(z_1,\ldots,z_n)\), then \(z+\varepsilon e_i\) means adding \(\varepsilon\in\{-1,1\}\) to coordinate \(i\), modulo \(L\), leaving all other coordinates unchanged. On real functions \(F:\mathbb T_L^n\to\mathbb R\), define
-\[
-R_nF(z)=\sum_{i=1}^n\sum_{\varepsilon\in\{-1,1\}}
-[F(z+\varepsilon e_i)-F(z)]
-\]
-and
-\[
-I_nF(z)=\sum_{i=1}^n\sum_{\varepsilon\in\{-1,1\}}
-\sum_{\substack{j=1\\j\ne i}}^n
-\mathbf 1_{\{z_j=z_i+\varepsilon\}}
-[F(z+\varepsilon e_i)-F(z)].
-\]
-For every \(q>0\) and \(d>0\), let \(Z=(Z_t)_{t\ge0}\) be the continuous-time Markov chain with generator
-\[
-G_n=q(R_n+d^{-1}I_n).
-\]
-Thus each label has independent rate \(q\) to each of its two neighboring sites, plus rate \(q/d\) for each other label occupying the destination site. Both directions occur once; for \(L=3\) they are distinct. The parameters \(n\) and \(q\) are independent, with no scaling relation imposed.
+### B.1. Uniform sampling
 
-For every integer \(k\) with \(1\le k<L/2\), define the positive-layer pair count
+For \(1\le m\le a\) and symmetric \(f:\mathbb T_L^m\to\mathbb R\), define
+\[
+D_{a,m}f(z)=\binom am^{-1}
+\sum_{\substack{S\subseteq\{1,\ldots,a\}\\|S|=m}}f(z_S).
+\tag{B.1.1}
+\]
+The order used to list \(z_S\) does not affect this definition.
+Write \(P_t^{[a]}\) for the semigroup with generator \(G_a\).
+Let \(\Omega_a=\{\eta\in\mathbb N_0^{\mathbb T_L}:\sum_x\eta_x=a\}\).
+
+**Lemma B.1 (sampling identity).** For every symmetric \(f\),
+\[
+G_aD_{a,m}f=D_{a,m}G_mf,
+\qquad
+P_t^{[a]}D_{a,m}f=D_{a,m}P_t^{[m]}f.
+\tag{B.1.2}
+\]
+In occupation coordinates, the same operator is
+\[
+D_{a,m}f(\eta)=\binom am^{-1}
+\sum_{k\in\Omega_m}
+\prod_x\binom{\eta_x}{k_x}f(k),
+\qquad \eta\in\Omega_a.
+\tag{B.1.3}
+\]
+Here symmetric tuple functions are identified with occupation functions.
+The operator is an averaging contraction.
+
+*Proof.* Independent jumps act on each selected coordinate at rate \(q\), and give \(D_{a,m}(qR_mf)\).
+For the interaction part, fix adjacent labels \(i,j\).
+Their two jumps onto each other have the same rate \(q/d\).
+Samples containing neither label contribute zero.
+Samples containing both give exactly the interaction part of \(D_{a,m}G_mf\).
+If \(S\) contains \(i\) but not \(j\), pair it with
+\[
+S'=(S\setminus\{i\})\cup\{j\}.
+\]
+The jump of \(i\) onto \(j\) changes \(f(z_S)\) by \(f(z_{S'})-f(z_S)\).
+The reverse jump changes \(f(z_{S'})\) by the negative of this value.
+These equal-rate terms cancel.
+Summing over adjacent unordered label pairs proves the generator identity.
+
+The generators preserve symmetry because their rates are invariant under label permutations.
+Iteration of the identity and the finite matrix exponential give the semigroup identity.
+There are \(\prod_x\binom{\eta_x}{k_x}\) subsets with sampled occupation \(k\).
+This proves (B.1.3), and the weights sum to \(\binom am\).
+Thus \(D_{a,m}\) is an averaging contraction.
+Finally, summing labelled rates at each source site gives the occupation generator
+\[
+\widehat G_aF(\eta)=\frac qd\sum_{x:\eta_x>0}\sum_{y=x\pm1}
+\eta_x(d+\eta_y)
+[F(\eta-\delta_x+\delta_y)-F(\eta)].
+\tag{B.1.4}
+\]
+Hence the same identities hold for the occupation semigroups.
+The argument concerns the average over all samples; it requires no autonomous dynamics for a fixed set of labels.
+
+### B.2. Conditional occupation estimate
+
+For \(x,y\in\mathbb T_L\), let
+\(\operatorname{dist}_L(x,y)=\min\{r,L-r\}\), where \(r\in\{0,\ldots,L-1\}\) represents \(y-x\).
+For \(n\ge2\) and an integer \(1\le k<L/2\), put
 \[
 B_k(z)=\sum_{1\le i<j\le n}
-\mathbf 1_{\{0<\operatorname{dist}_L(z_i,z_j)\le k\}}.
+\mathbf1_{\{0<\operatorname{dist}_L(z_i,z_j)\le k\}}.
 \]
 Pairs at equal sites are excluded.
 
-**Proposition B.1 (conditional occupation estimate).** For every deterministic initial state \(z\in\mathbb T_L^n\), and also for every initial distribution on that state space, equip the chain with its completed right-continuous natural filtration \((\mathcal F_t)_{t\ge0}\). For every deterministic real number \(\delta\ge0\) and every pair of bounded nonnegative stopping times \(\tau,\sigma\) satisfying
-\[
-\tau\le\sigma\le\tau+\delta\quad\text{almost surely},
-\]
-the following conditional inequality holds:
+**Proposition B.2 (conditional occupation estimate).** Let \(Z\) have generator \(G_n\), with any deterministic initial state or initial distribution.
+Use its completed right-continuous natural filtration \((\mathcal F_t)\).
+For every deterministic \(\delta\ge0\) and bounded nonnegative stopping times \(\tau,\sigma\) such that \(\tau\le\sigma\le\tau+\delta\) almost surely,
 \[
 \mathbb E\left[\int_\tau^\sigma B_k(Z_s)\,ds
 \;\middle|\;\mathcal F_\tau\right]
-\le
-\binom n2\left[
-\frac{2k\delta}{L+1/d}+\frac{Lk}{q}
-\right]
+\le\binom n2\left[\frac{2k\delta}{L+1/d}+\frac{Lk}{q}\right]
 \quad\text{almost surely}.
-\]
-
-The bound has exactly the displayed constants and is uniform over all the stated parameters, initial states or distributions, and stopping times. No equilibrium or separated-start assumption is imposed. No fixed pair of physical labels is assumed to have autonomous dynamics.
-
-*Proof.* Fix arbitrary parameters and stopping times from the statement. Use the notation \(L,n,q,d,k,\delta,G_n,R_n,I_n,B_k\) and \(\operatorname{dist}_L\). No limit or relationship between \(q\) and \(n\) will be used.
-
-### B.1. The two-particle difference and the three-site case
-
-First set the particle number equal to two, retaining the same \(L,q,d\), and let
-\[
-r=z_2-z_1\in\mathbb T_L.
-\]
-Two independent moves increase \(r\) by one and two decrease it by one, each move having rate \(q\). If \(r=1\), either label can jump onto the other label, with additional rate \(q/d\), and both such jumps send \(r\) to zero. If \(r=-1\), the same description holds with the direction reversed. There is no interaction jump at equality.
-
-Consequently, for a function \(v:\mathbb T_L\to\mathbb R\), the difference generator is
-\[
-\begin{aligned}
-\mathcal H v(r)={}&
-2q[v(r+1)+v(r-1)-2v(r)]\\
-&+\frac{2q}{d}\mathbf 1_{\{r=1\}}[v(0)-v(1)]
-+\frac{2q}{d}\mathbf 1_{\{r=-1\}}[v(0)-v(-1)].
-\end{aligned}
-\tag{B.1.1}
-\]
-For \(L\ge3\), the residues \(1\) and \(-1\) are distinct. In particular, when \(L=3\), a state \(r=1\) has rate \(2q(1+1/d)\) to zero and rate \(2q\) to \(r=2\), and the analogous statement holds at \(r=2=-1\). The transition between \(1\) and \(2\) is not an extra collision transition. At zero the rates to \(1\) and \(2\) are each \(2q\).
-
-Use representatives \(r=0,\ldots,L-1\), with all subscripts interpreted modulo \(L\). Define positive vertex weights and positive edge coefficients by
-\[
-m_r=
-\begin{cases}
-1+1/d,&r=0,\\
-1,&r\ne0,
-\end{cases}
-\qquad
-a_r=
-\begin{cases}
-1+1/d,&r=0\text{ or }r=L-1,\\
-1,&\text{otherwise}.
-\end{cases}
-\tag{B.1.2}
-\]
-The coefficient \(a_r\) belongs to the edge joining \(r\) to \(r+1\). Comparing each term with (B.1.1) proves the identity
-\[
-\mathcal H v(r)
-=\frac{2q}{m_r}
-\left[a_r(v(r+1)-v(r))
--a_{r-1}(v(r)-v(r-1))\right].
-\tag{B.1.3}
-\]
-At zero the two ratios \(a_r/m_r\) are one; at \(1\) and \(-1\) the inward ratio is \(1+1/d\); all other ratios are one. For \(L=3\) the two edges incident to zero are distinct and the remaining edge has coefficient one, so (B.1.3) includes that case exactly. The weights in (B.1.2) are used only in this finite algebraic identity, not as an assumption on the law of the process.
-
-### B.2. A finite pair Poisson equation
-
-Define
-\[
-b(r)=\mathbf 1_{\{0<\operatorname{dist}_L(r,0)\le k\}},
-\qquad
-\beta=\frac{2k}{L+1/d},
-\qquad
-g_r=m_r(b(r)-\beta).
 \tag{B.2.1}
 \]
-The condition \(k<L/2\) means that the layer contains exactly the \(2k\) distinct nonzero residues represented by \(1,\ldots,k\) and \(L-k,\ldots,L-1\). Also \(2k<L<L+1/d\), so \(0<\beta<1\). It follows that
-\[
-\sum_{r=0}^{L-1}g_r=2k-\beta(L+1/d)=0,
-\qquad
-\sum_{r=0}^{L-1}(g_r)^+=2k(1-\beta)\le2k,
-\tag{B.2.2}
-\]
-where \(a^+=\max\{a,0\}\). In particular \(g_0=-m_0\beta\); equality is not included in the positive layer.
+The bound is uniform over all these parameters, initial laws, and stopping times.
 
-For \(r=0,\ldots,L-1\), put
-\[
-S_r=\frac1{2q}\sum_{j=0}^r g_j.
-\]
-Then \(S_{L-1}=0\), so the cyclic identity
-\[
-S_r-S_{r-1}=g_r/(2q)
-\tag{B.2.3}
-\]
-also holds at \(r=0\). Every difference of two \(S_r\)'s is a signed sum of \(g_j/(2q)\) over an interval. A positive such sum is at most the total positive sum in (B.2.2); its negative is at most the total negative sum in absolute value, which is the same because the full sum is zero. Therefore
-\[
-\max_rS_r-\min_rS_r\le k/q.
-\tag{B.2.4}
-\]
+### B.3. A finite pair Poisson equation
 
-Let
-\[
-\overline S=
-\frac{\sum_{r=0}^{L-1}S_r/a_r}{\sum_{r=0}^{L-1}1/a_r},
-\qquad J_r=S_r-\overline S.
-\]
-All the weights \(1/a_r\) are positive. Hence \(\overline S\) lies between the minimum and maximum of the \(S_r\)'s. Equations (B.2.3)–(B.2.4) give
-\[
-J_r-J_{r-1}=g_r/(2q),
-\qquad
-\sum_{r=0}^{L-1}J_r/a_r=0,
-\qquad
-|J_r|\le k/q.
-\tag{B.2.5}
-\]
-
-Set \(v(0)=0\) and prescribe the increments
-\[
-v(r+1)-v(r)=J_r/a_r.
-\tag{B.2.6}
-\]
-The zero sum in (B.2.5) makes this prescription periodic, and hence defines a function on \(\mathbb T_L\). Substituting (B.2.5)–(B.2.6) into (B.1.3) proves
-\[
-\mathcal H v=b-\beta.
-\tag{B.2.7}
-\]
-Since every \(a_r\ge1\), each increment in (B.2.6) has absolute value at most \(k/q\). Traveling along at most \(L\) edges between any two residues gives
-\[
-\operatorname{osc}(v):=\max_rv(r)-\min_rv(r)\le Lk/q.
-\tag{B.2.8}
-\]
-
-The operator (B.1.1) commutes with reflection \(r\mapsto-r\), and \(b\) is even. Thus replacing \(v(r)\) by \((v(r)+v(-r))/2\) preserves (B.2.7). Every new value remains between the old minimum and maximum, so it preserves (B.2.8) as an upper bound. From now on use this even \(v\). No uniqueness assertion for the Poisson equation is needed.
-
-### B.3. The averaged factorial identity
-
-This section proves the averaging identity. Fixed physical labels are not assumed to have autonomous projected dynamics.
-
-For any population size \(a\ge1\), define its occupation space
-\[
-\Omega_a=\left\{\eta\in\mathbb N_0^{\mathbb T_L}:
-\sum_x\eta_x=a\right\}.
-\]
-The occupation map of a labelled tuple is
-\[
-\eta_x(z)=\sum_{i=1}^a\mathbf 1_{\{z_i=x\}}.
-\]
-For a function \(f:\Omega_a\to\mathbb R\), summing the labelled jump rates of all particles at the source gives
-\[
-\widehat G_a f(\eta)
-=\frac qd\sum_{x\in\mathbb T_L}\sum_{y=x\pm1}
-\eta_x(d+\eta_y)
-[f(\eta-\delta_x+\delta_y)-f(\eta)].
-\tag{B.3.1}
-\]
-Moreover \(G_a(f\circ\eta)=(\widehat G_af)\circ\eta\), directly from the same sum. A coordinate vector \(\delta_x\) in this section has one at site \(x\) and zero elsewhere.
-
-For \(\xi\in\Omega_2\) and \(\eta\in\Omega_n\), put
-\[
-W_\xi(\eta)=\prod_x\binom{\eta_x}{\xi_x},
-\qquad
-D_{n,2}f(\eta)=\binom n2^{-1}\sum_{\xi\in\Omega_2}W_\xi(\eta)f(\xi).
-\tag{B.3.2}
-\]
-The binomial convention is \(\binom ab=0\) for integers \(a\ge0\) and \(b>a\), and \(\binom a0=1\). Expressions with a negative component of \(\xi\) are omitted. Choosing two of the \(n\) physical indices according to their sites, or taking the degree-two coefficient of
-\[
-\prod_x(1+t)^{\eta_x}=(1+t)^n,
-\]
-proves \(\sum_{\xi\in\Omega_2}W_\xi(\eta)=\binom n2\).
-
-We claim that for every real \(f\) on \(\Omega_2\),
-\[
-\widehat G_nD_{n,2}f=D_{n,2}\widehat G_2f.
-\tag{B.3.3}
-\]
-To prove this, first consider one undirected edge \(\{x,y\}\) and write \(\eta_x=A,\eta_y=B\). Let \(\mathcal L^{xy}\) denote its two unscaled rates \(A(d+B)\) and \(B(d+A)\). With formal variables \(u,v\), set
-\[
-J(u,v)=(1+u)^A(1+v)^B.
-\]
-The increment from \(x\) to \(y\) is
-\((v-u)(1+u)^{A-1}(1+v)^B\), multiplied by \(A(d+B)\); the reverse increment has \(u-v\) and the exponents interchanged. If a departure population is zero its whole contribution is zero. Separating the terms involving \(d\) from those involving \(AB\) yields the polynomial identity
-\[
-\mathcal L^{xy}J
-=d(v-u)(\partial_u-\partial_v)J
-+(v-u)^2\partial_u\partial_vJ.
-\tag{B.3.4}
-\]
-For the mixed term, the two expressions with factor \(AB\) combine to
-\(AB(v-u)^2(1+u)^{A-1}(1+v)^{B-1}\), which is the second term of (B.3.4).
-
-For \(\xi_x=r,\xi_y=s\), extract the coefficient of \(u^rv^s\), retaining the binomial factors at all other sites. The derivative terms produce respectively the two index shifts and the unshifted coefficients. Explicitly the result is
+*Proof of Proposition B.2.* For two labels, the difference \(r=z_2-z_1\in\mathbb T_L\) has generator
 \[
 \begin{aligned}
-\mathcal L^{xy}W_\xi={}&
-(r+1)(d+s-1)W_{\xi+\delta_x-\delta_y}\\
-&+(s+1)(d+r-1)W_{\xi-\delta_x+\delta_y}\\
-&-[r(d+s)+s(d+r)]W_\xi.
+\mathcal Hv(r)={}&2q[v(r+1)+v(r-1)-2v(r)]\\
+&+\frac{2q}{d}\mathbf1_{\{r=1\}}[v(0)-v(1)]
++\frac{2q}{d}\mathbf1_{\{r=-1\}}[v(0)-v(-1)].
 \end{aligned}
-\tag{B.3.5}
+\tag{B.3.1}
 \]
-For example, the \(dv\partial_u\) contribution to the first shifted term is \(d(r+1)\), and the \(v^2\partial_u\partial_v\) contribution is \((r+1)(s-1)\), giving its displayed coefficient. The other shifted coefficient is obtained from the positive term \(du\partial_v\) in the expansion of \(d(v-u)(\partial_u-\partial_v)\), and from \(u^2\partial_u\partial_v\). The unshifted contributions are \(-d(r+s)-2rs\). When \(s=0\) the first shifted term is absent, and when \(r=0\) the second is absent; no negative-index binomial is evaluated.
+Indeed, two independent jumps increase the difference, and two decrease it.
+At distance one, either label can jump onto the other.
+For \(L=3\), the rates from \(r=1\) are \(2q(1+1/d)\) to zero and \(2q\) to \(r=2\); there is no extra collision jump between the two nonzero residues.
 
-Multiply (B.3.5) by \(f(\xi)\), and sum over \(\Omega_2\). In the first shifted sum set \(\ell=\xi+\delta_x-\delta_y\). Its coefficient becomes \(\ell_x(d+\ell_y)\), and its test becomes \(f(\ell-\delta_x+\delta_y)\). The omitted-index convention is equivalent to the departure restriction \(\ell_x\ge1\). In the second shifted sum the coefficient and test become \(\ell_y(d+\ell_x)\) and \(f(\ell+\delta_x-\delta_y)\). The diagonal terms give the two corresponding negative terms. This is precisely the generator for the two orientations of the edge acting on \(f\), averaged with weights \(W_\ell(\eta)\).
+Use representatives \(r=0,\ldots,L-1\), with all subscripts modulo \(L\), and set
+\[
+m_r=1+d^{-1}\mathbf1_{\{r=0\}},
+\qquad
+a_r=1+d^{-1}\mathbf1_{\{r=0\text{ or }r=L-1\}}.
+\]
+The coefficient \(a_r\) belongs to the edge from \(r\) to \(r+1\).
+Direct comparison with (B.3.1) gives
+\[
+\mathcal Hv(r)=\frac{2q}{m_r}
+\left[a_r(v(r+1)-v(r))-a_{r-1}(v(r)-v(r-1))\right].
+\tag{B.3.2}
+\]
+The two edges incident to zero are distinct for every \(L\ge3\), so this formula includes \(L=3\).
 
-For \(L\ge3\), the collection
+Put
 \[
-\mathcal E_L=\{\{x,x+1\}:x\in\mathbb T_L\}
+b(r)=\mathbf1_{\{0<\operatorname{dist}_L(r,0)\le k\}},
+\qquad \beta=\frac{2k}{L+1/d},
+\qquad g_r=m_r(b(r)-\beta).
 \]
-consists of \(L\) distinct undirected edges. Its two orientations reproduce each of the \(2L\) directed nearest-neighbor edges in (B.3.1) once. In particular \(L=3\) gives three undirected edges and six directed ones. Summing the preceding edge identity, multiplying by the common factor \(q/d\), and dividing by \(\binom n2\) proves (B.3.3). The sampling order does not change \(q\).
+The layer has exactly \(2k\) nonzero residues.
+Thus \(0<\beta<1\), \(\sum_rg_r=0\), and
+\(\sum_r(g_r)^+=2k(1-\beta)\le2k\).
+Define
+\[
+S_r=\frac1{2q}\sum_{j=0}^rg_j,
+\qquad
+\overline S=\frac{\sum_rS_r/a_r}{\sum_r1/a_r},
+\qquad J_r=S_r-\overline S.
+\]
+Every difference of two partial sums is a signed sum over an interval.
+The total positive and negative sums both have absolute value at most \(2k\).
+It follows that \(\max S-\min S\le k/q\).
+The weighted mean \(\overline S\) lies within this range, so
+\[
+|J_r|\le k/q,
+\qquad \sum_rJ_r/a_r=0,
+\qquad J_r-J_{r-1}=g_r/(2q).
+\tag{B.3.3}
+\]
+The last identity also holds at zero because \(S_{L-1}=0\).
+Prescribe \(v(0)=0\) and
+\[
+v(r+1)-v(r)=J_r/a_r.
+\]
+The zero sum makes \(v\) periodic.
+Equations (B.3.2)–(B.3.3), and \(a_r\ge1\), give
+\[
+\mathcal Hv=b-\beta,
+\qquad
+\operatorname{osc}(v):=\max v-\min v\le Lk/q.
+\tag{B.3.4}
+\]
+The operator \(\mathcal H\) commutes with reflection and \(b\) is even.
+Replacing \(v(r)\) by \((v(r)+v(-r))/2\) therefore preserves the equation and the oscillation bound.
+Use this even \(v\) below.
 
-Because \(v\) is even, the two-particle tuple function
-\[
-f_v(z_1,z_2)=v(z_2-z_1)
-\]
-is symmetric, so it defines an occupation function \(f_v:\Omega_2\to\mathbb R\). Equation (B.1.1) says that \(\widehat G_2f_v\), evaluated on the occupation of \((z_1,z_2)\), is \(\mathcal Hv(z_2-z_1)\). There are exactly \(W_\xi(\eta(z))\) unordered pairs of distinct physical indices whose sampled occupation is \(\xi\). Hence (B.3.2) gives
-\[
-V(z):=D_{n,2}f_v(\eta(z))
-=\binom n2^{-1}\sum_{1\le i<j\le n}v(z_j-z_i).
-\tag{B.3.6}
-\]
-Combining (B.3.1), (B.3.3), (B.3.6), and (B.2.7) proves the exact labelled-generator identity
-\[
-G_nV(z)
-=\binom n2^{-1}\sum_{i<j}\mathcal Hv(z_j-z_i)
-=\binom n2^{-1}B_k(z)-\beta.
-\tag{B.3.7}
-\]
-This is an identity for the average over all physical index pairs. It does not assert an intertwining for the projection onto any fixed two labels. For example the rate at which one selected label moves to a neighboring site is \(q(1+\eta_y/d)\), which depends on unselected labels at that site. The cancellation needed in (B.3.7) is exactly the coefficient-and-reindexing argument above.
+### B.4. Conditional Dynkin formula
 
-Finally every summand of (B.3.6) lies between \(\min v\) and \(\max v\). Thus
+The function \(f_v(z_1,z_2)=v(z_2-z_1)\) is symmetric.
+Equation (B.3.1) gives \(G_2f_v(z)=\mathcal Hv(z_2-z_1)\).
+Lemma B.1 gives
 \[
-\operatorname{osc}(V)\le\operatorname{osc}(v)\le Lk/q.
-\tag{B.3.8}
+V(z):=D_{n,2}f_v(z)=\binom n2^{-1}\sum_{i<j}v(z_j-z_i),
 \]
-
-### B.4. Conditional Dynkin identity at stopping times
-
-The labelled state space is finite. Its total jump rate is bounded by
 \[
-2qn+\frac qd n(n-1),
-\]
-because for \(L\ge3\) each ordered pair of distinct labels can contribute to at most one directed adjacency term. In particular the chain is nonexplosive. Both \(V\) and \(G_nV\) are bounded.
-
-For completeness the finite-state Markov property and differentiation of the finite matrix exponential imply, for deterministic \(s\le t\),
-\[
-\mathbb E[V(Z_t)-V(Z_s)\mid\mathcal F_s]
-=\mathbb E\left[\int_s^tG_nV(Z_u)\,du
-\;\middle|\;\mathcal F_s\right].
-\]
-One can see this by differentiating
-\(\mathbb E[V(Z_{s+r})\mid\mathcal F_s]=(e^{rG_n}V)(Z_s)\)
-in \(r\) and integrating; all sums are finite. Therefore
-\[
-M_t=V(Z_t)-V(Z_0)-\int_0^tG_nV(Z_s)\,ds
-\]
-is a martingale, also for the usual completed right-continuous natural filtration. On every deterministic bounded time interval it is bounded by a deterministic constant.
-
-Let a deterministic \(T\) bound both \(\tau\) and \(\sigma\). Approximate these stopping times from above by stopping times taking finitely many dyadic values, bounded by \(T+1\). For those times the conditional martingale identity follows by a finite sum of the deterministic-time identities. Right continuity of \(V(Z_t)\), continuity of the time integral, and the preceding boundedness permit dominated convergence, including after multiplication by each bounded \(\mathcal F_\tau\)-measurable random variable. This proves
-\[
-\mathbb E\left[\int_\tau^\sigma G_nV(Z_s)\,ds
-\;\middle|\;\mathcal F_\tau\right]
-=
-\mathbb E[V(Z_\sigma)-V(Z_\tau)\mid\mathcal F_\tau].
+G_nV=\binom n2^{-1}B_k-\beta,
+\qquad \operatorname{osc}(V)\le Lk/q.
 \tag{B.4.1}
 \]
-No stopping-time independence is used.
-
-Insert (B.3.7) into (B.4.1), and use (B.3.8), \(\beta\ge0\), and \(\sigma-\tau\le\delta\). It follows that
+On the finite state space, \(V\) and \(G_nV\) are bounded.
+Its Dynkin martingale is bounded on each deterministic finite time interval.
+Conditional optional sampling at the stated bounded stopping times yields
+\[
+\mathbb E\left[\int_\tau^\sigma G_nV(Z_s)\,ds\mid\mathcal F_\tau\right]
+=\mathbb E[V(Z_\sigma)-V(Z_\tau)\mid\mathcal F_\tau].
+\]
+Insert (B.4.1), use \(\sigma-\tau\le\delta\), and obtain
 \[
 \begin{aligned}
 \binom n2^{-1}
-\mathbb E\left[\int_\tau^\sigma B_k(Z_s)\,ds
-\;\middle|\;\mathcal F_\tau\right]
-&=\beta\,\mathbb E[\sigma-\tau\mid\mathcal F_\tau]
+\mathbb E\left[\int_\tau^\sigma B_k(Z_s)\,ds\mid\mathcal F_\tau\right]
+&=\beta\mathbb E[\sigma-\tau\mid\mathcal F_\tau]
 +\mathbb E[V(Z_\sigma)-V(Z_\tau)\mid\mathcal F_\tau]\\
 &\le\beta\delta+\operatorname{osc}(V)\\
 &\le\frac{2k\delta}{L+1/d}+\frac{Lk}{q}.
 \end{aligned}
 \]
-Multiplication by \(\binom n2\) proves the stated inequality.
-
-Every bound used is independent of the starting state or its distribution. The proof applies to all stated finite parameter values, including \(L=3\), and counts only positive pair distances.
+Multiplication by \(\binom n2\) proves (B.2.1).
